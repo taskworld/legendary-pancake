@@ -1,2 +1,3 @@
 # legendary-pancake
-A static site generator???
+
+> Great repository names are short and memorable. Need inspiration? How about __legendary-pancake__.
