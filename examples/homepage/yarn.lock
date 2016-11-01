@@ -2645,9 +2645,9 @@ lazystream@^1.0.0:
   dependencies:
     readable-stream "^2.0.5"
 
-legendary-pancake@0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/legendary-pancake/-/legendary-pancake-0.1.3.tgz#39e694c458bcf88643f3b9196bcfa3b1635f1964"
+legendary-pancake@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/legendary-pancake/-/legendary-pancake-0.1.4.tgz#44269e677cd06c3d8deb94f76f908d6ef00baca6"
   dependencies:
     chalk "^1.1.3"
     extract-text-webpack-plugin "^1.0.1"
