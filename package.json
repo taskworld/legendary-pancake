@@ -9,6 +9,7 @@
   },
   "author": "Thai Pangsakulyanont @ Taskworld <thai.p@taskworld.com>",
   "license": "MIT",
+  "files": [ "dist", "lib", "src", "scripts", "index.js", "prerenderer.js" ],
   "scripts": {
     "prepublish": "babel src -d dist"
   },
