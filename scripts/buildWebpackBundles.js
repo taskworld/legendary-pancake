@@ -7,6 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const JsOnlyPlugin = require('../lib/JsOnlyPlugin')
 const getUserConfigApplier = require('../lib/getUserConfigApplier')
+const configureWebpackToResolveProjectReact = require('../lib/configureWebpackToResolveProjectReact')
 
 console.log(chalk.bold.cyan('* Building webpack bundles...'))
 
@@ -57,19 +58,18 @@ function getConfig () {
       entry: {
         main: './src/browser.js'
       },
-
       output: {
         publicPath: '/',
         path: path.join(projectDirectory, 'build', 'browser'),
         filename: 'assets/javascripts/bundle-[chunkhash].js',
         chunkFilename: 'assets/javascripts/chunk-[name]-[chunkhash].js'
       },
-
       module: {
-        loaders: [
-        ]
+        loaders: [ ]
       },
-
+      resolve: {
+        alias: { }
+      },
       plugins: [
         extractTextPlugin,
         new webpack.optimize.OccurrenceOrderPlugin(),
@@ -84,6 +84,8 @@ function getConfig () {
     if (process.env.NO_UGLIFY) {
       config.plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }))
     }
+
+    configureWebpackToResolveProjectReact(config)
 
     return userConfigApplier.applyWebpackConfig(config, {
       webpack,
@@ -100,7 +102,6 @@ function getConfig () {
       entry: {
         prerenderer: './src/prerenderer.js'
       },
-
       output: {
         publicPath: '/',
         path: path.join(projectDirectory, 'build', 'prerenderer'),
@@ -108,14 +109,13 @@ function getConfig () {
         chunkFilename: 'chunk-[name].js',
         libraryTarget: 'commonjs2'
       },
-
       target: 'node',
-
       module: {
-        loaders: [
-        ]
+        loaders: [ ]
       },
-
+      resolve: {
+        alias: { }
+      },
       plugins: [
         extractTextPlugin,
         new JsOnlyPlugin(),
@@ -128,6 +128,8 @@ function getConfig () {
         })
       ]
     }
+
+    configureWebpackToResolveProjectReact(config)
 
     return userConfigApplier.applyWebpackConfig(config, {
       webpack,

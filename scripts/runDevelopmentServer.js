@@ -7,6 +7,8 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const getUserConfigApplier = require('../lib/getUserConfigApplier')
+const configureWebpackToResolveProjectReact = require('../lib/configureWebpackToResolveProjectReact')
+
 const port = +process.env.PORT || 9000
 
 console.log(chalk.bold.cyan('* Running development server on port %s.'), port)
@@ -24,14 +26,13 @@ compiler.plugin('done', (stats) => {
   }
 })
 
+app.use(require('connect-history-api-fallback')())
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath,
   stats: { colors: true }
 }))
-
 app.use(require('webpack-hot-middleware')(compiler))
-app.use(require('connect-history-api-fallback')())
 app.listen(port)
 
 function getConfig () {
@@ -40,21 +41,20 @@ function getConfig () {
 
   const config = {
     entry: {
-      main: './src/browser.js'
+      main: [ './src/browser.js', 'webpack-hot-middleware/client' ]
     },
-
     output: {
       publicPath: '/',
       path: path.join(projectDirectory, 'build', 'browser'),
       filename: 'assets/javascripts/bundle.js',
       chunkFilename: 'assets/javascripts/chunk-[name]-[chunkhash].js'
     },
-
     module: {
-      loaders: [
-      ]
+      loaders: [ ]
     },
-
+    resolve: {
+      alias: { }
+    },
     plugins: [
       new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.HotModuleReplacementPlugin(),
@@ -64,13 +64,16 @@ function getConfig () {
           'NODE_ENV': JSON.stringify('development')
         }
       })
-    ]
+    ],
+    devtool: 'eval'
   }
+
+  configureWebpackToResolveProjectReact(config)
 
   return userConfigApplier.applyWebpackConfig(config, {
     webpack,
     target: 'browser',
-    env: 'production',
-    css: (loaders) => 'style-loader!' + loaders
+    env: 'development',
+    css: (loaders) => require.resolve('style-loader') + '!' + loaders
   })
 }
