@@ -10,7 +10,7 @@ const getUserConfigApplier = require('../lib/getUserConfigApplier')
 const port = +process.env.PORT || 9000
 
 console.log(chalk.bold.cyan('* Running development server on port %s.'), port)
-console.log('* To change port, please set the PORT environment variable.')
+console.log('* (Set the PORT environment variable to change.)')
 
 const app = express()
 const config = getConfig()

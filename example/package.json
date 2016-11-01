@@ -1,0 +1,7 @@
+{
+  "name": "legendary-pancake-example",
+  "version": "1.0.0",
+  "description": "Most basic configuration for legendary pancake",
+  "main": "index.js",
+  "license": "MIT"
+}

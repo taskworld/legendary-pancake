@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+'use strict'
+
+const path = require('path')
+const chalk = require('chalk')
+
+const mode = process.argv[2]
+const args = process.argv.slice(3)
+const spawnSync = require('child_process').spawnSync
+
+const scripts = {
+  'server': require.resolve('../scripts/runDevelopmentServer')
+}
+
+if (scripts.hasOwnProperty(mode)) {
+  console.log(chalk.bold.blue('* legendary-pancake'), chalk.bold.white(mode))
+  console.log(chalk.bold.cyan('* Running script:'), path.basename(scripts[mode]))
+  const result = spawnSync('node', [ scripts[mode], ...args ], { stdio: 'inherit' })
+  process.exit(result.status)
+} else {
+  if (mode) {
+    console.log(chalk.bold.red('* Unknown command "%s".'), mode)
+  } else {
+    console.log(chalk.bold.yellow('* Usage:'), chalk.bold.blue('legendary-pancake'), chalk.bold.white('command'), '[...args]')
+  }
+  console.log('* Valid commands are: %s.', require('util').inspect(Object.keys(scripts)))
+}
