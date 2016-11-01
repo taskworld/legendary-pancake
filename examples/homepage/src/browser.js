@@ -3,9 +3,14 @@ import { createRenderer } from 'legendary-pancake'
 import pages from './pages'
 
 const app = document.getElementById('app')
+
+// Creates a page renderer, which manages React and React Router for us.
+// It also makes sure to load the initial route before mounting.
 const renderer = createRenderer(pages)
 renderer.renderTo(app)
 
+// Bridge with hot reloading API.
 if (module.hot) {
-  module.hot.accept('./pages', renderer.createHotReloadHandler(() => require('./pages').default))
+  const onHotReload = renderer.createHotReloadHandler(() => require('./pages').default)
+  module.hot.accept('./pages', onHotReload)
 }
