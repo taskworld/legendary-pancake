@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+'use strict'
+
+require('vinyl-fs').src('public/**/*').pipe(require('gulp-gh-pages')())

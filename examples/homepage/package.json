@@ -7,7 +7,8 @@
   "scripts": {
     "build": "legendary-pancake build",
     "test": "mocha",
-    "public": "./scripts/generatePublicFolder"
+    "public": "./scripts/generatePublicFolder",
+    "gh-pages": "./scripts/deployToGitHubPages"
   },
   "dependencies": {
     "highlight.js": "^9.7.0",
@@ -25,11 +26,13 @@
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "gulp-gh-pages": "^0.5.4",
     "html-loader": "^0.4.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "markdown-it-loader": "^0.5.0",
     "mocha": "^3.1.2",
-    "standard": "^8.5.0"
+    "standard": "^8.5.0",
+    "vinyl-fs": "^2.4.4"
   }
 }

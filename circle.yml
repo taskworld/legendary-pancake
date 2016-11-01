@@ -16,4 +16,10 @@ test:
     - yarn link
     - cd examples/homepage && yarn && yarn link legendary-pancake
     - cd examples/homepage && npm run build
-    - cd examples/homepage && npm run public
+    - cd examples/homepage && npm test
+deployment:
+  master:
+    branch: master
+    commands:
+      - cd examples/homepage && npm run public
+      - cd examples/homepage && npm run gh-pages
