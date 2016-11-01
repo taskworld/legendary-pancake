@@ -13,6 +13,7 @@ dependencies:
     - yarn
 test:
   override:
+    - npm link
     - yarn link
     - cd examples/homepage && yarn && yarn link legendary-pancake
     - cd examples/homepage && npm run build
