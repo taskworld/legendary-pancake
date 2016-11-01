@@ -10,6 +10,7 @@
   "author": "Thai Pangsakulyanont @ Taskworld <thai.p@taskworld.com>",
   "license": "MIT",
   "files": [
+    "bin",
     "dist",
     "lib",
     "src",

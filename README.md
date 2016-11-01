@@ -3,7 +3,16 @@
 > Great repository names are short and memorable. Need inspiration? How about __legendary-pancake__.
 > —GitHub
 
-__legendary-pancake__ is an __advanced__ static site generator based on Webpack, React and React Router.
+__legendary-pancake__ is an __advanced__ static site generator based on Webpack, React and React Router. It has been extracted from Taskworld’s marketing site which requires:
+
+- __Localization.__ The entire site may be translated into multiple languages.
+
+- __A/B testing.__ We sometimes must generate more than one version of the same page to be able to perform A/B testing.
+
+- __Prerendering.__ As a marketing site, the web page must appear as soon as possible.
+
+- __Splitting bundles.__ With many pages, it’s too slow to download the entire site’s content. We must be able to group related pages together as well to make navigation between different pages instantaneous.
+
 It is designed for advanced users and gives you total control of:
 
 - __Your site structure.__
