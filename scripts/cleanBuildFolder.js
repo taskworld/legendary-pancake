@@ -1,7 +1,9 @@
 'use strict'
-const rimraf = require('rimraf')
 const fs = require('fs')
+const chalk = require('chalk')
+const rimraf = require('rimraf')
 
 if (fs.existsSync('build/webpack.stats.json')) {
+  console.log(chalk.bold.yellow('* Cleaning build folder...'))
   rimraf.sync('build')
 }

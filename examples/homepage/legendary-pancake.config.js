@@ -30,5 +30,6 @@ exports.configureWebpack = (config, { css }) => {
       loader: 'file-loader'
     }
   )
+  config.output.publicPath = '/legendary-pancake/'
   return config
 }

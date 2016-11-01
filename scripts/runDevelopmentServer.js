@@ -26,7 +26,7 @@ compiler.plugin('done', (stats) => {
   }
 })
 
-app.use(require('connect-history-api-fallback')())
+app.use(require('connect-history-api-fallback')({ index: config.output.publicPath }))
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath,

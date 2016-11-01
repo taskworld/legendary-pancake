@@ -1,7 +1,8 @@
 import useScroll from 'react-router-scroll/lib/useScroll'
 import React from 'react'
+import { createHistory } from 'history'
 import { render } from 'react-dom'
-import { applyRouterMiddleware, Router, browserHistory, Route } from 'react-router'
+import { applyRouterMiddleware, Router, Route, useRouterHistory } from 'react-router'
 
 import resolvePage from './resolvePage'
 
@@ -61,6 +62,10 @@ export function createRenderer (pages, {
     renderTo (container) {
       const initialPathname = window.location.pathname
       const initialPage = resolvePage(pages, initialPathname)
+      const browserHistory = useRouterHistory(createHistory)({
+        /* global __webpack_public_path__ */
+        basename: __webpack_public_path__.replace(/\/$/, '')
+      })
       initialPage((initialContent) => {
         manager.setContent(initialContent)
         function onEnter (nextState, replace, callback) {
