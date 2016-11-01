@@ -10,26 +10,56 @@
           
           <LINK HREF='/legendary-pancake/assets/stylesheets/style-e44d741b540925c65190e482ca0d2844.css' REL='stylesheet' />
         </head>
-        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="-516918083"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/" data-reactid="4">Homepage</a><a href="/docs/" class="active" data-reactid="5">Docs</a><a href="/pancake/" data-reactid="6">Pancake</a></nav><main data-reactid="7"><!-- react-empty: 8 --><h1 data-reactid="9">Docs</h1><div class="Docs" data-reactid="10"><h1>legendary-pancake</h1>
+        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="-789612780"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/" data-reactid="4">Homepage</a><a href="/docs/" class="active" data-reactid="5">Docs</a><a href="/pancake/" data-reactid="6">Pancake</a></nav><main data-reactid="7"><!-- react-empty: 8 --><h1 data-reactid="9">Docs</h1><div class="Docs" data-reactid="10"><h1>legendary-pancake</h1>
 <blockquote>
 <p>Great repository names are short and memorable. Need inspiration? How about <strong>legendary-pancake</strong>.
 —GitHub</p>
 </blockquote>
-<p><strong>legendary-pancake</strong> is a static site generator based on Webpack, React and React Router.</p>
+<p><strong>legendary-pancake</strong> is an <strong>advanced</strong> static site generator based on Webpack, React and React Router.
+It is designed for advanced users and gives you total control of:</p>
 <ul>
 <li>
-<p><strong>JavaScript defined pages.</strong> legendary-pancake makes no assumption about your site structure. All your pages are defined in a single <code>pages.js</code> file, so you can leverage Webpack and JavaScript to generate multiple pages from your data!</p>
+<p><strong>Your site structure.</strong>
+Unlike <a href="https://github.com/gatsbyjs/gatsby">Gatsby</a>, it doesn’t define routes based on filesystem layout.
+You define all the routes programmatically.</p>
 </li>
 <li>
-<p><strong>Asynchronous page loading.</strong> Pages are resolved asynchronously, so you can leverage Webpack’s code-splitting features so split your site into multiple chunks.</p>
-<p>Since it makes no assumption about how your pages are loaded, you can split by page, or group pages together in the same chunk. You can load new pages on demand, or you can preload the next page in the background.</p>
+<p><strong>How you write CSS.</strong>
+PostCSS? PreCSS? cssnext? Sass? LESS? Stylus? CSS Modules? Autoprefixer? Inline Styles?
+legendary-pancake has no preference on this.</p>
 </li>
 <li>
-<p><strong>Hot reloading.</strong> Thanks to React and declarative DOM, hot-reloading is supported!</p>
+<p><strong>The prerendering process.</strong>
+You decide how your React element gets turned into an HTML file.</p>
+<p>You can use libraries like <a href="https://github.com/gaearon/react-document-title">react-document-title</a>, <a href="https://github.com/nfl/react-helmet">react-helmet</a> to help with <code>&lt;head&gt;</code> elements, or roll your own solution.</p>
+<p>Inline your CSS or JS in your HTML file, or put it in another chunk. It’s all up to you.</p>
+</li>
+<li>
+<p><strong>Route loading.</strong> legendary-pancake has no preference on how to load your page contents.
+Use webpack’s <a href="https://webpack.github.io/docs/code-splitting.html">code splitting</a> or <a href="https://github.com/webpack/bundle-loader">bundle-loader</a> to load your site content asynchronously, either eagerly or on-demand.</p>
+<p>Split chunks by page, or group related pages together.
+You are in total control.</p>
+</li>
+<li>
+<p><strong>Your deployment process.</strong>
+The pages will be built in <code>build/pages</code> and other webpack assets in <code>build/browser</code>.
+The rest is up to you.
+By separating the data from the assets, this allows for some advanced use-cases, such as A/B testing a static site.</p>
 </li>
 </ul>
-<p>More info later if this experiment ever succeed………………………</p>
+<p>But <code>legendary-pancake</code> will take care of these for you:</p>
+<ul>
+<li>
+<p><strong>Development and building workflow.</strong>
+It comes with a CLI tool to run the development server,
+build webpack bundles and prerender pages.</p>
+</li>
+<li>
+<p><strong>Managing URLs and route transitions.</strong>
+legendary-pancake preconfigures React Router to support asynchronous routing and prerendering at the same time, and abstracts it away behind an API that is more suited for static routes.</p>
+</li>
+</ul>
 </div></main></div></div>
-        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-4156c9a087fa7d412b6f.js'></SCRIPT>
+        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-9bbae111c42abf45b5a4.js'></SCRIPT>
       </html>
     
