@@ -10,7 +10,8 @@ const spawnSync = require('child_process').spawnSync
 
 const scripts = {
   'server': require.resolve('../scripts/runDevelopmentServer'),
-  'build': require.resolve('../scripts/cleanAndBuild')
+  'build': require.resolve('../scripts/cleanAndBuild'),
+  'clean': require.resolve('../scripts/cleanBuildFolder')
 }
 
 if (scripts.hasOwnProperty(mode)) {

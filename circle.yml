@@ -4,6 +4,10 @@ machine:
   node:
     version:
       '7'
+general:
+  branches:
+    ignore:
+      - gh-pages
 dependencies:
   pre:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -26,3 +30,10 @@ deployment:
       - git config --global user.email "rebasecop@users.noreply.github.com"
       - git config --global user.name "Rebase Cop on CircleCI"
       - cd examples/homepage && npm run gh-pages
+  npm:
+    tag: /v.*/
+    owner: taskworld
+    commands:
+      - cd examples/homepage && npm run clean
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - npm publish
