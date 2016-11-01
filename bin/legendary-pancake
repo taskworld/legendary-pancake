@@ -9,7 +9,8 @@ const args = process.argv.slice(3)
 const spawnSync = require('child_process').spawnSync
 
 const scripts = {
-  'server': require.resolve('../scripts/runDevelopmentServer')
+  'server': require.resolve('../scripts/runDevelopmentServer'),
+  'build': require.resolve('../scripts/cleanAndBuild')
 }
 
 if (scripts.hasOwnProperty(mode)) {
