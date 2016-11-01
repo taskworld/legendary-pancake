@@ -5,9 +5,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "highlight.js": "^9.7.0",
+    "markdown-it": "^8.0.1",
+    "normalize.css": "^5.0.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-fa": "^4.1.2"
+    "react-fa": "^4.1.2",
+    "react-helmet": "^3.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.18.0",

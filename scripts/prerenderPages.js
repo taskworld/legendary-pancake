@@ -8,15 +8,16 @@ const mkdirp = require('mkdirp')
 
 function prerenderPages () {
   console.log(chalk.bold.cyan('* Prerendering web pages.'))
-  const { pages, render, renderRedirectPage } = require(fs.realpathSync('build/prerenderer/prerenderer.js'))
+  const {
+    pathnames,
+    render
+  } = require(fs.realpathSync('build/prerenderer/prerenderer.js')).prerenderer
   const webpackStats = require(fs.realpathSync('build/webpack.stats.json'))
-  const pathnames = Object.keys(pages)
   const stats = webpackStats.children[0]
   const promises = [ ]
   for (const pathname of pathnames) {
     promises.push(new Promise((resolve, reject) => {
-      const page = pages[pathname]
-      const receiveResult = (error, html) => {
+      render({ pathname, stats }, (error, html) => {
         if (error) {
           console.log(error)
           return reject(error)
@@ -27,14 +28,7 @@ function prerenderPages () {
           emit(html)
         }
         resolve()
-      }
-      if (typeof page === 'function') {
-        page((content) => {
-          render({ pathname, content, stats }, receiveResult)
-        })
-      } else if (typeof page === 'string') {
-        renderRedirectPage({ pathname, redirectLocation: page, stats }, receiveResult)
-      }
+      })
     }))
   }
   return Promise.all(promises)

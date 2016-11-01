@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Arimo:400,700');
+@import '~normalize.css';
+@import url('https://fonts.googleapis.com/css?family=Arimo:400,700|Space+Mono:400,700');
 
 body {
   text-align: center;
@@ -24,6 +25,19 @@ nav {
   }
 }
 
+main {
+  max-width: 25em;
+  margin: 0 auto;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  line-height: 1.5;
+}
+
 img {
   max-width: 100%;
+}
+
+code {
+  font-family: 'Space Mono';
+  color: #52b166;
 }

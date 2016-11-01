@@ -3,10 +3,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { applyRouterMiddleware, Router, browserHistory, Route } from 'react-router'
 
-// Finds the page by given pathname.
-function resolvePage (pages, pathname) {
-  return pages[pathname] || pages['/no-match/']
-}
+import resolvePage from './resolvePage'
 
 // Creates a renderer object that can render the static page into the DOM.
 export function createRenderer (pages, {

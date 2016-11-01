@@ -1,15 +1,16 @@
 import './Layout.less'
 
+import Helmet from 'react-helmet'
 import React from 'react'
 import { Link } from 'legendary-pancake'
 
 export default function Layout ({ children }) {
   return (
     <div>
+      <Helmet titleTemplate='%s - legendary-pancake' />
       <nav>
         <NavLink to='/'>Homepage</NavLink>
-        <NavLink to='/a/'>Page A</NavLink>
-        <NavLink to='/b/'>Page B</NavLink>
+        <NavLink to='/docs/'>Docs</NavLink>
         <NavLink to='/pancake/'>Pancake</NavLink>
       </nav>
       <main>
