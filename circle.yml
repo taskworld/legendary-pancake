@@ -15,4 +15,6 @@ test:
   override:
     - npm link
     - yarn link
-    - cd examples/homepage && yarn link legendary-pancake
+    - cd examples/homepage && yarn && yarn link legendary-pancake
+    - cd examples/homepage && legendary-pancake build
+    - cd examples/homepage && ./generatePublicFolder
