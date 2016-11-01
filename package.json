@@ -1,0 +1,24 @@
+{
+  "name": "legendary-pancake",
+  "version": "1.0.0",
+  "description": "Static site generator based on React and webpack with emphasis on customizability",
+  "main": "index.js",
+  "repository": {
+    "url": "git@github.com:taskworld/legendary-pancake.git",
+    "type": "git"
+  },
+  "author": "Thai Pangsakulyanont @ Taskworld <thai.p@taskworld.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.24.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.13.1"
+  },
+  "devDependencies": {
+    "standard": "^8.5.0"
+  }
+}
