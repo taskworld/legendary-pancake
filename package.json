@@ -1,6 +1,6 @@
 {
   "name": "legendary-pancake",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Static site generator based on React and webpack with emphasis on customizability",
   "main": "index.js",
   "repository": {
@@ -9,7 +9,14 @@
   },
   "author": "Thai Pangsakulyanont @ Taskworld <thai.p@taskworld.com>",
   "license": "MIT",
-  "files": [ "dist", "lib", "src", "scripts", "index.js", "prerenderer.js" ],
+  "files": [
+    "dist",
+    "lib",
+    "src",
+    "scripts",
+    "index.js",
+    "prerenderer.js"
+  ],
   "scripts": {
     "prepublish": "babel src -d dist"
   },
