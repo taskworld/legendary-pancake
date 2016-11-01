@@ -1,4 +1,0 @@
-#!/bin/bash -e
-
-rsync -rv --delete build/browser/ public
-rsync -rv build/pages/ public
