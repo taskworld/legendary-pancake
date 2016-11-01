@@ -3,6 +3,7 @@ import React from 'react'
 import { createHistory } from 'history'
 import { render } from 'react-dom'
 import { applyRouterMiddleware, Router, Route, useRouterHistory } from 'react-router'
+import { createStore } from 'redux'
 
 import resolvePage from './resolvePage'
 
@@ -18,10 +19,16 @@ export function createRenderer (pages, {
     constructor (props) {
       super(props)
       this.state = { content: manager.getContent() }
-      this.unsubscribe = manager.onContentChange(() => {
+      this.unsubscribe = manager.subscribe(() => {
         const content = manager.getContent()
         this.setState({ content })
       })
+    }
+    shouldComponentUpdate (nextProps, nextState) {
+      return this.state.content !== nextState.content
+    }
+    getChildContext () {
+      return { legendaryPancakeManager: manager }
     }
     componentWillUnmount () {
       this.unsubscribe()
@@ -33,15 +40,23 @@ export function createRenderer (pages, {
   PageRenderer.propTypes = {
     location: React.PropTypes.object.isRequired // from react-router
   }
+  PageRenderer.childContextTypes = {
+    legendaryPancakeManager: React.PropTypes.object
+  }
 
   // Loads the page and give the content to the manager, and fire callback.
   function handlePathname (pathname, callback) {
     currentPathname = pathname
     const nextPage = resolvePage(pages, pathname)
+    let loaded = false
     nextPage((nextContent) => {
-      manager.setContent(nextContent)
+      manager.handleContentLoaded(nextContent)
+      loaded = true
       callback()
     })
+    if (!loaded) {
+      manager.handleContentLoadStarted()
+    }
   }
 
   function replacePages (nextPages) {
@@ -67,7 +82,7 @@ export function createRenderer (pages, {
         basename: __webpack_public_path__.replace(/\/$/, '')
       })
       initialPage((initialContent) => {
-        manager.setContent(initialContent)
+        manager.handleContentLoaded(initialContent)
         function onEnter (nextState, replace, callback) {
           const nextPathname = nextState.location.pathname
           const nextPage = resolvePage(pages, nextPathname)
@@ -92,29 +107,33 @@ export function createRenderer (pages, {
 
 // Creates a content manager which stores the content to render.
 function createManager () {
-  let handleContentChange = null
-  let currentContent = null
+  const store = createStore(reducer)
   return {
-    onContentChange (callback) {
-      if (handleContentChange) {
-        throw new Error('renderTo() must be called only once!')
-      }
-      handleContentChange = callback
-      return function unsubscribe () {
-        if (handleContentChange !== callback) {
-          throw new Error('Already unsubscribed')
-        }
-        handleContentChange = null
-      }
+    subscribe (callback) {
+      return store.subscribe(callback)
     },
     getContent () {
-      return currentContent
+      return store.getState().content
     },
-    setContent (content) {
-      currentContent = content
-      if (handleContentChange) {
-        handleContentChange()
-      }
+    isLoading () {
+      return store.getState().loading
+    },
+    handleContentLoaded (content) {
+      store.dispatch({ type: 'CONTENT_LOADED', content })
+    },
+    handleContentLoadStarted () {
+      store.dispatch({ type: 'CONTENT_LOAD_STARTED' })
+    }
+  }
+
+  function reducer (state = { content: null, loading: true }, action) {
+    switch (action.type) {
+      case 'CONTENT_LOADED':
+        return { content: action.content, loading: false }
+      case 'CONTENT_LOAD_STARTED':
+        return { content: state.content, loading: true }
+      default:
+        return state
     }
   }
 }
