@@ -81,7 +81,7 @@ function getConfig () {
         })
       ]
     }
-    if (process.env.NO_UGLIFY) {
+    if (!process.env.NO_UGLIFY) {
       config.plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }))
     }
 
