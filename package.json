@@ -1,6 +1,6 @@
 {
   "name": "legendary-pancake",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Static site generator based on React and webpack with emphasis on customizability",
   "main": "index.js",
   "repository": {
