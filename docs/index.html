@@ -8,14 +8,14 @@
           
           
           
-          <LINK HREF='/legendary-pancake/assets/stylesheets/style-e44d741b540925c65190e482ca0d2844.css' REL='stylesheet' />
+          <LINK HREF='/legendary-pancake/assets/stylesheets/style-97d8a21724061ab66f1c2e5bfa987fcf.css' REL='stylesheet' />
         </head>
-        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="-4928314"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/" data-reactid="4">Homepage</a><a href="/docs/" class="active" data-reactid="5">Docs</a><a href="/pancake/" data-reactid="6">Pancake</a></nav><main data-reactid="7"><!-- react-empty: 8 --><h1 data-reactid="9">Docs</h1><div class="Docs" data-reactid="10"><h1>legendary-pancake</h1>
+        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="-457850273"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/" data-reactid="4">Homepage</a><a href="/docs/" class="active" data-reactid="5">Docs</a><a href="/pancake/" data-reactid="6">Pancake</a></nav><main data-reactid="7"><!-- react-empty: 8 --><h1 data-reactid="9">Docs</h1><div class="Docs" data-reactid="10"><h1>legendary-pancake</h1>
 <blockquote>
 <p>Great repository names are short and memorable. Need inspiration? How about <strong>legendary-pancake</strong>.
 —GitHub</p>
 </blockquote>
-<p><strong>legendary-pancake</strong> is an <strong>advanced</strong> static site generator based on Webpack, React and React Router. It has been extracted from Taskworld’s marketing site which requires:</p>
+<p><strong>legendary-pancake</strong> is an <strong><em>advanced</em></strong> static site generator based on webpack, React and React Router. It has been extracted from Taskworld’s marketing site which requires:</p>
 <ul>
 <li>
 <p><strong>Localization.</strong> The entire site may be translated into multiple languages.</p>
@@ -24,18 +24,18 @@
 <p><strong>A/B testing.</strong> We sometimes must generate more than one version of the same page to be able to perform A/B testing.</p>
 </li>
 <li>
-<p><strong>Prerendering.</strong> As a marketing site, the web page must appear as soon as possible.</p>
+<p><strong>Prerendering.</strong> As a marketing site, the web page must appear as quickly as possible.</p>
 </li>
 <li>
-<p><strong>Splitting bundles.</strong> With many pages, it’s too slow to download the entire site’s content. We must be able to group related pages together as well to make navigation between different pages instantaneous.</p>
+<p><strong>Code splitting.</strong> With many pages, it’s too slow to download the entire site’s content. We must be able to group related pages together as well to make navigation between different pages instantaneous.</p>
 </li>
 </ul>
 <p>It is designed for advanced users and gives you total control of:</p>
 <ul>
 <li>
 <p><strong>Your site structure.</strong>
-Unlike <a href="https://github.com/gatsbyjs/gatsby">Gatsby</a>, it doesn’t define routes based on filesystem layout.
-You define all the routes programmatically.</p>
+Unlike <a href="https://github.com/gatsbyjs/gatsby">Gatsby</a>, it doesn’t generate routes based on filesystem layout.
+<em>You</em> define every route programmatically.</p>
 </li>
 <li>
 <p><strong>How you write CSS.</strong>
@@ -45,14 +45,14 @@ legendary-pancake has no preference on this.</p>
 <li>
 <p><strong>The prerendering process.</strong>
 You decide how your React element gets turned into an HTML file.</p>
-<p>You can use libraries like <a href="https://github.com/gaearon/react-document-title">react-document-title</a>, <a href="https://github.com/nfl/react-helmet">react-helmet</a> to help with <code>&lt;head&gt;</code> elements, or roll your own solution.</p>
-<p>Inline your CSS or JS in your HTML file, or put it in another chunk. It’s all up to you.</p>
+<p>You can use libraries like <a href="https://github.com/gaearon/react-document-title">react-document-title</a>, <a href="https://github.com/nfl/react-helmet">react-helmet</a> to help with <code>&lt;head&gt;</code> elements, or roll your own solution.
+Inline your CSS or JS in your HTML file, or put it in another chunk. It’s all up to you.</p>
 </li>
 <li>
-<p><strong>Route loading.</strong> legendary-pancake has no preference on how to load your page contents.
-Use webpack’s <a href="https://webpack.github.io/docs/code-splitting.html">code splitting</a> or <a href="https://github.com/webpack/bundle-loader">bundle-loader</a> to load your site content asynchronously, either eagerly or on-demand.</p>
-<p>Split chunks by page, or group related pages together.
-You are in total control.</p>
+<p><strong>Route loading.</strong> legendary-pancake has no preference on how to load your page contents. For small sites, you can package the entire site content in a single bundle.</p>
+<p>Or you can use webpack’s <a href="https://webpack.github.io/docs/code-splitting.html">code splitting</a> or <a href="https://github.com/webpack/bundle-loader">bundle-loader</a> to split your contents into multiple chunks which are loaded asynchronously, either eagerly or on-demand.
+Create a chunk for every page, or group related pages together based on analytics data, like we do at Taskworld.
+You’re in total control.</p>
 </li>
 <li>
 <p><strong>Your deployment process.</strong>
@@ -65,15 +65,19 @@ By separating the data from the assets, this allows for some advanced use-cases,
 <ul>
 <li>
 <p><strong>Development and building workflow.</strong>
-It comes with a CLI tool to run the development server,
-build webpack bundles and prerender pages.</p>
+It comes with a CLI tool to run the development server and generate the static site.</p>
 </li>
 <li>
 <p><strong>Managing URLs and route transitions.</strong>
 legendary-pancake preconfigures React Router to support asynchronous routing and prerendering at the same time, and abstracts it away behind an API that is more suited for static routes.</p>
 </li>
 </ul>
-</div></main></div></div>
-        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-2fd6c0a5e25951ca95a4.js'></SCRIPT>
+<h2>Examples</h2>
+<ul>
+<li><a href="https://taskworld.github.io/legendary-pancake/">legendary-pancake’s home page</a> is generated by legendary-pancake.
+The source code lives in the <a href="https://github.com/taskworld/legendary-pancake/tree/master/examples/homepage/">examples/homepage</a> directory.</li>
+</ul>
+</div></main><!-- react-empty: 11 --></div></div>
+        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-a36cf5b10e29a1b37884.js'></SCRIPT>
       </html>
     
