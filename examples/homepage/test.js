@@ -12,7 +12,7 @@ describe('webpack stats', () => {
 describe('generated pages', () => {
   exists('build/pages/index.html')
   contains('build/pages/index.html', 'page title', 'Home page - legendary-pancake')
-  contains('build/pages/index.html', 'rendered content', 'very customizable static site builder')
+  contains('build/pages/index.html', 'rendered content', 'static site builder based on React')
   contains('build/pages/docs/index.html', 'markdown rendered content', 'Need inspiration?')
 })
 
