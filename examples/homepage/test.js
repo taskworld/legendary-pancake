@@ -6,7 +6,8 @@ const assert = require('assert')
 /* global describe, it */
 
 describe('webpack stats', () => {
-  exists('build/webpack.stats.json')
+  exists('build/webpack.stats.browser.json')
+  exists('build/webpack.stats.prerenderer.json')
 })
 
 describe('generated pages', () => {
