@@ -2,3 +2,9 @@
 
 rsync -rv --delete build/browser/ public
 rsync -rv build/pages/ public
+
+echo '
+general:
+  branches:
+    ignore:
+      - gh-pages' > public/circle.yml
