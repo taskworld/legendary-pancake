@@ -69,7 +69,7 @@ function createScriptString (publicPath, assets) {
 
 export function defaultRenderRedirectPage (redirectLocation) {
   /* global __legendary_pancake_base_pathname__ */
-  const base = __legendary_pancake_base_pathname__
+  const base = __legendary_pancake_base_pathname__ // eslint-disable-line camelcase
   const url = base + redirectLocation
   return `<!DOCTYPE html>
     <html>
