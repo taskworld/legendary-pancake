@@ -15,7 +15,7 @@ const scripts = {
 }
 
 if (scripts.hasOwnProperty(mode)) {
-  console.log(chalk.bold.blue('* legendary-pancake'), chalk.bold.white(mode))
+  console.log(chalk.bold.blue('* legendary-pancake'), chalk.bold.white(mode), `v${require('../package').version}`)
   console.log(chalk.bold.cyan('* Running script:'), path.basename(scripts[mode]))
   const result = spawnSync('node', [ scripts[mode], ...args ], { stdio: 'inherit' })
   process.exit(result.status)
