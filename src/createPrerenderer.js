@@ -15,9 +15,10 @@ export function createPrerenderer (pages, {
     const page = resolvePage(pages, pathname)
     const stylesheets = createStyleString(stats.publicPath, stats.assetsByChunkName.main)
     const javascripts = createScriptString(stats.publicPath, stats.assetsByChunkName.main)
+    const renderOptions = { pathname, stylesheets, javascripts, stats }
     if (typeof page === 'string') {
       try {
-        callback(null, renderRedirectPage(page))
+        callback(null, renderRedirectPage(page, renderOptions))
       } catch (e) {
         return callback(e)
       }
@@ -33,12 +34,7 @@ export function createPrerenderer (pages, {
             return callback(new Error('react-router did not send renderProps!!!!!'))
           }
           try {
-            const result = renderPage(<RouterContext {...renderProps} />, {
-              pathname,
-              stylesheets,
-              javascripts,
-              stats
-            })
+            const result = renderPage(<RouterContext {...renderProps} />, renderOptions)
             callback(null, result)
           } catch (e) {
             return callback(e)
