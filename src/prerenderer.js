@@ -1,3 +1,3 @@
-import createPrerenderer from './createPrerenderer'
+import createPrerenderer, { defaultRenderRedirectPage } from './createPrerenderer'
 
-export { createPrerenderer }
+export { createPrerenderer, defaultRenderRedirectPage }
