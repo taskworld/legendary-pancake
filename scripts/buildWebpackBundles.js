@@ -19,12 +19,8 @@ webpack(config).run((error, webpackStats) => {
   }
   const stats = webpackStats.toJson()
 
-  const statsFile = path.join('build', 'webpack.stats.json')
-
-  if (statsFile) {
-    console.log('* Writing webpack stats to ' + statsFile)
-    fs.writeFileSync(statsFile, JSON.stringify(stats))
-  }
+  writeStats(stats.children[0], path.join('build', 'webpack.stats.browser.json'))
+  writeStats(stats.children[1], path.join('build', 'webpack.stats.prerenderer.json'))
 
   if (stats.warnings.length) {
     console.log(chalk.bold.yellow('* There are %s warnings.'), stats.warnings.length)
@@ -41,6 +37,11 @@ webpack(config).run((error, webpackStats) => {
 
   console.log(chalk.bold.green('* webpack bundles built succesfully!'))
 })
+
+function writeStats (stats, target) {
+  console.log('* Writing webpack stats to ' + target)
+  fs.writeFileSync(target, JSON.stringify(stats))
+}
 
 function getConfig () {
   const projectDirectory = process.cwd()
@@ -70,6 +71,7 @@ function getConfig () {
       resolve: {
         alias: { }
       },
+      profile: true,
       plugins: [
         extractTextPlugin,
         new webpack.optimize.OccurrenceOrderPlugin(),

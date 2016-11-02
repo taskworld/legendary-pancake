@@ -12,8 +12,7 @@ function prerenderPages () {
     pathnames,
     render
   } = require(fs.realpathSync('build/prerenderer/prerenderer.js')).prerenderer
-  const webpackStats = require(fs.realpathSync('build/webpack.stats.json'))
-  const stats = webpackStats.children[0]
+  const stats = require(fs.realpathSync('build/webpack.stats.browser.json'))
   const promises = [ ]
   for (const pathname of pathnames) {
     promises.push(new Promise((resolve, reject) => {
