@@ -33,7 +33,12 @@ export function createPrerenderer (pages, {
             return callback(new Error('react-router did not send renderProps!!!!!'))
           }
           try {
-            const result = renderPage(<RouterContext {...renderProps} />, { stylesheets, javascripts, stats })
+            const result = renderPage(<RouterContext {...renderProps} />, {
+              pathname,
+              stylesheets,
+              javascripts,
+              stats
+            })
             callback(null, result)
           } catch (e) {
             return callback(e)
