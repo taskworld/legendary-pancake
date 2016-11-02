@@ -9,7 +9,8 @@ import resolvePage from './resolvePage'
 
 // Creates a renderer object that can render the static page into the DOM.
 export function createRenderer (pages, {
-  renderPage = (page) => page
+  renderPage = (page) => page,
+  onLocationChange = () => { }
 } = { }) {
   const manager = createManager()
   let currentPathname
@@ -89,6 +90,9 @@ export function createRenderer (pages, {
         window.location.replace(basename + initialPage)
         return
       }
+
+      onLocationChange(initialLocation)
+      browserHistory.listen(onLocationChange)
 
       initialPage((initialContent) => {
         manager.handleContentLoaded(initialPathname, initialContent, { asynchronously: false })
