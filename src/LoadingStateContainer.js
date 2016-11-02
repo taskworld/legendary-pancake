@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class LoadingIndicator extends React.Component {
+export class LoadingStateContainer extends React.Component {
   constructor (props, context) {
     super(props, context)
     const manager = context.legendaryPancakeManager
@@ -13,21 +13,18 @@ export class LoadingIndicator extends React.Component {
       this.setState({ loading: manager.isLoading() })
     })
   }
-  shouldComponentUpdate (nextProps, nextState) {
-    return this.state.loading !== nextState.loading
-  }
   componentWillUnmount () {
     this.unsubscribe()
   }
   render () {
-    return this.props.renderIndicator(this.state.loading)
+    return this.props.renderContent(this.state.loading)
   }
 }
-LoadingIndicator.propTypes = {
-  renderIndicator: React.PropTypes.func.isRequired
+LoadingStateContainer.propTypes = {
+  renderContent: React.PropTypes.func.isRequired
 }
-LoadingIndicator.contextTypes = {
+LoadingStateContainer.contextTypes = {
   legendaryPancakeManager: React.PropTypes.object
 }
 
-export default LoadingIndicator
+export default LoadingStateContainer

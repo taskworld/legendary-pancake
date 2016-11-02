@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 
 import createRenderer from './createRenderer'
-import LoadingIndicator from './LoadingIndicator'
+import LoadingStateContainer from './LoadingStateContainer'
 
-export { Link, LoadingIndicator, createRenderer }
+export { Link, LoadingStateContainer, createRenderer }
