@@ -67,20 +67,23 @@ function createScriptString (publicPath, assets) {
   ).join('')
 }
 
-function defaultRenderRedirectPage (redirectLocation) {
+export function defaultRenderRedirectPage (redirectLocation) {
+  /* global __legendary_pancake_base_pathname__ */
+  const base = __legendary_pancake_base_pathname__
+  const url = base + redirectLocation
   return `<!DOCTYPE html>
     <html>
       <head>
         <meta charset="UTF-8" />
         <title>Redirect</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="refresh" content="0;url=${redirectLocation}">
+        <meta http-equiv="refresh" content="0;url=${url}">
       </head>
       <body>
         <span style="font: caption">
-          If you are not redirected automatically, <a href='${redirectLocation}'>follow the link to ${redirectLocation}</a>.
+          If you are not redirected automatically, <a href='${url}'>follow the link to ${url}</a>.
         </span>
-        <SCRIPT>window.location.replace(${JSON.stringify(redirectLocation)})</SCRIPT>
+        <SCRIPT>window.location.replace(${JSON.stringify(url)})</SCRIPT>
       </body>
     </html>
   `

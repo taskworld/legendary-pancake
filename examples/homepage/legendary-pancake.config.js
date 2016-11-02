@@ -2,6 +2,8 @@
 
 const path = require('path')
 
+exports.basePathname = '/legendary-pancake/'
+
 exports.configureWebpack = (config, { css }) => {
   config.module.loaders.push(
     {

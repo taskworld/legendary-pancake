@@ -77,8 +77,8 @@ export function createRenderer (pages, {
   return {
     // Loads the first page, then renders the router into the DOM.
     renderTo (container) {
-      /* global __webpack_public_path__ */
-      const basename = __webpack_public_path__.replace(/\/$/, '')
+      /* global __legendary_pancake_base_pathname__ */
+      const basename = __legendary_pancake_base_pathname__.replace(/\/$/, '')
       const browserHistory = useRouterHistory(createHistory)({ basename })
 
       const initialLocation = browserHistory.getCurrentLocation()

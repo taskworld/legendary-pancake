@@ -15,6 +15,7 @@ describe('generated pages', () => {
   contains('build/pages/index.html', 'page title', 'Home page - legendary-pancake')
   contains('build/pages/index.html', 'rendered content', 'static site builder based on React')
   contains('build/pages/docs/index.html', 'markdown rendered content', 'Need inspiration?')
+  contains('build/pages/readme/index.html', 'redirect to correct path', '"/legendary-pancake/docs/"')
 })
 
 function exists (path) {
