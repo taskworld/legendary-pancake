@@ -6,6 +6,7 @@ import Docs from './Docs'
 import Layout from './Layout'
 
 export default {
+  // Front page
   '/': (callback) => {
     callback(
       <Layout>
@@ -16,6 +17,11 @@ export default {
       </Layout>
     )
   },
+
+  // A redirect
+  '/readme/': '/docs/',
+
+  // A synchronous route
   '/docs/': (callback) => {
     callback(
       <Layout>
@@ -25,6 +31,8 @@ export default {
       </Layout>
     )
   },
+
+  // An asynchronous route (using require.ensure())
   '/pancake/': (callback) => {
     require.ensure([ ], () => {
       const PancakePage = require('./PancakePage').default
@@ -36,6 +44,8 @@ export default {
       )
     })
   },
+
+  // 404 page. By convention, use /no-match/.
   '/no-match/': (callback) => {
     callback(
       <Layout>

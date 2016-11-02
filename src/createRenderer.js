@@ -77,12 +77,19 @@ export function createRenderer (pages, {
   return {
     // Loads the first page, then renders the router into the DOM.
     renderTo (container) {
-      const initialPathname = window.location.pathname
+      /* global __webpack_public_path__ */
+      const basename = __webpack_public_path__.replace(/\/$/, '')
+      const browserHistory = useRouterHistory(createHistory)({ basename })
+
+      const initialLocation = browserHistory.getCurrentLocation()
+      const initialPathname = initialLocation.pathname
       const initialPage = resolvePage(pages, initialPathname)
-      const browserHistory = useRouterHistory(createHistory)({
-        /* global __webpack_public_path__ */
-        basename: __webpack_public_path__.replace(/\/$/, '')
-      })
+
+      if (typeof initialPage === 'string') {
+        window.location.replace(basename + initialPage)
+        return
+      }
+
       initialPage((initialContent) => {
         manager.handleContentLoaded(initialPathname, initialContent, { asynchronously: false })
         function onEnter (nextState, replace, callback) {
