@@ -49,13 +49,15 @@ export function createRenderer (pages, {
     currentPathname = pathname
     const nextPage = resolvePage(pages, pathname)
     let loaded = false
+    let asynchronously = false
     nextPage((nextContent) => {
-      manager.handleContentLoaded(nextContent)
+      manager.handleContentLoaded(pathname, nextContent, { asynchronously })
       loaded = true
       callback()
     })
     if (!loaded) {
-      manager.handleContentLoadStarted()
+      manager.handleContentLoadStarted(pathname)
+      asynchronously = true
     }
   }
 
@@ -82,7 +84,7 @@ export function createRenderer (pages, {
         basename: __webpack_public_path__.replace(/\/$/, '')
       })
       initialPage((initialContent) => {
-        manager.handleContentLoaded(initialContent)
+        manager.handleContentLoaded(initialPathname, initialContent, { asynchronously: false })
         function onEnter (nextState, replace, callback) {
           const nextPathname = nextState.location.pathname
           const nextPage = resolvePage(pages, nextPathname)
@@ -118,20 +120,24 @@ function createManager () {
     isLoading () {
       return store.getState().loading
     },
-    handleContentLoaded (content) {
-      store.dispatch({ type: 'CONTENT_LOADED', content })
+    handleContentLoaded (pathname, content, { asynchronously }) {
+      store.dispatch({ type: 'CONTENT_LOADED', pathname, content, asynchronously })
     },
-    handleContentLoadStarted () {
-      store.dispatch({ type: 'CONTENT_LOAD_STARTED' })
+    handleContentLoadStarted (pathname) {
+      store.dispatch({ type: 'CONTENT_LOAD_STARTED', pathname })
     }
   }
 
-  function reducer (state = { content: null, loading: true }, action) {
+  function reducer (state = { content: null, loading: true, pathname: null }, action) {
     switch (action.type) {
       case 'CONTENT_LOADED':
-        return { content: action.content, loading: false }
+        if (!action.asynchronously || action.pathname === state.pathname) {
+          return { content: action.content, loading: false, pathname: action.pathname }
+        } else {
+          return state
+        }
       case 'CONTENT_LOAD_STARTED':
-        return { content: state.content, loading: true }
+        return { content: state.content, loading: true, pathname: action.pathname }
       default:
         return state
     }
