@@ -58,7 +58,9 @@ const pages = {
   }
 }
 
-// Advanced usage: Generating documentation from Markdown files...
+// Advanced usage: Generating documentation from asynchronously loaded
+// Markdown files...
+//
 for (const documentationPage of documentationPages) {
   const { url, metadata } = documentationPage
   pages[url] = (callback) => {
