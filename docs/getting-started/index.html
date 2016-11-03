@@ -4,27 +4,312 @@
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <meta http-equiv="X-UA-Compatible" content="ie=edge">
-          <title data-react-helmet="true"></title>
+          <title data-react-helmet="true">Getting started - legendary-pancake</title>
           
           <link data-react-helmet="true" rel="preload" href="https://fonts.googleapis.com/css?family=Arimo:Arimo:400,400i,700,700i|Space+Mono:400,700" as="style" onload="this.rel=&#x27;stylesheet&#x27;"/>
           <script data-react-helmet="true" >!function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);;!function(t){if(t.loadCSS){var e=loadCSS.relpreload={};if(e.support=function(){try{return t.document.createElement("link").relList.supports("preload")}catch(t){return!1}},e.poly=function(){for(var e=t.document.getElementsByTagName("link"),n=0;n<e.length;n++){var r=e[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(t.loadCSS(r.href,r),r.rel=null)}},!e.support()){e.poly();var n=t.setInterval(e.poly,300);t.addEventListener&&t.addEventListener("load",function(){t.clearInterval(n)}),t.attachEvent&&t.attachEvent("onload",function(){t.clearInterval(n)})}}}(this);</script>
-          <STYLE>.HTMLContent{text-align:left;font-size:.75em}.HTMLContent blockquote{border:.15em solid #ccc;border-left-width:.6em;margin-left:0;padding-left:.9em;margin-right:0;color:#444;font-size:.8em}/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[hidden],template{display:none}body{text-align:center;font-size:30px;font-family:Arimo,sans-serif;margin-bottom:4em}@media (max-width:720px){body{font-size:24px}}a{color:#25a9ac}nav{display:block}nav a{padding:.4em;margin:.1em;display:inline-block;text-decoration:none}nav a.active{color:#000;font-weight:700}main{max-width:25em;margin:0 auto;padding-left:.5em;padding-right:.5em;line-height:1.5}img{max-width:100%}code{font-family:Space Mono;color:#52b166}</STYLE>
+          <STYLE>.HTMLContent{text-align:left;font-size:.75em}.HTMLContent blockquote{border:.15em solid #ccc;border-left-width:.6em;margin-left:0;padding-left:.9em;margin-right:0;color:#444;font-size:.8em}.HTMLContent pre{padding:.5em;border:2px solid #ddd;font-size:.8em}.HTMLContent pre code{font-family:Roboto Mono,monospace}.HTMLContent h1,.HTMLContent h2{margin-top:2em}code.language-js{color:#333}code.language-js .hljs-meta{color:#69c}code.language-js .hljs-keyword{color:#963;font-weight:700}code.language-js .hljs-regexp,code.language-js .hljs-string{color:#759}code.language-js .hljs-comment{color:#693}/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[hidden],template{display:none}body{text-align:center;font-size:30px;font-family:Arimo,sans-serif;margin-bottom:4em;background:#fff;color:#000}@media (max-width:720px){body{font-size:24px}}a{color:#25a9ac}nav{display:block}nav a{padding:.4em;margin:.1em;display:inline-block;text-decoration:none}nav a.active{color:#000;font-weight:700}main{max-width:25em;margin:0 auto;padding-left:.5em;padding-right:.5em;line-height:1.5}img{max-width:100%}code{font-family:Space Mono;color:#52b166}</STYLE>
         </head>
-        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="-1669233602"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/" data-reactid="4">Home</a><a href="/introduction/" data-reactid="5">Intro</a><a href="/pancake/" data-reactid="6">Pancake</a></nav><main style="opacity:1;" data-reactid="7"><h1 data-reactid="8">Getting started</h1><div class="HTMLContent" data-reactid="9"><p>As I’ve previously said before, legendary-pancake is an <strong><em>advanced</em></strong> tool,
-so it doesn’t try to abstract away from the intricacies of webpack.</p>
+        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="-1452082245"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/" data-reactid="4">Home</a><a href="/introduction/" data-reactid="5">Intro</a><a href="/pancake/" data-reactid="6">Pancake</a></nav><main style="opacity:1;" data-reactid="7"><!-- react-empty: 8 --><h1 data-reactid="9">Getting started</h1><div class="HTMLContent" data-reactid="10"><p>This document will guide you through setting up <code>legendary-pancake</code>.</p>
+<p>As I’ve probably said before, legendary-pancake is an <strong><em>advanced</em></strong> tool;
+it doesn’t try to shield you away from the intricacies of webpack.
+While this means it will take some time to set up a project,
+it gives you a lot of flexibility (see the Intro page).</p>
+<p>Therefore, this guide assumes knowledge of configuring webpack,
+using loaders and doing code splitting.</p>
 <h1>Setting up the project</h1>
 <p>Create an empty directory for your website:</p>
-<pre><code class="language-sh">mkdir my-site
+<pre><code class="language-bash">mkdir my-site
 <span class="hljs-built_in">cd</span> my-site
 </code></pre>
+<p>Inside it we will create a directory to hold our site’s source code:</p>
+<pre><code class="language-bash">mkdir src
+</code></pre>
 <p>Initialize a package:</p>
-<pre><code class="language-sh">yarn init -y
+<pre><code class="language-bash">yarn init -y
 </code></pre>
-<p>Install legendary-pancake:</p>
-<pre><code class="language-sh">yarn add --dev legendary-pancake
+<p>Install legendary-pancake into the project:</p>
+<pre><code class="language-bash">yarn add --dev legendary-pancake
 </code></pre>
-<p>More info later lol</p>
+<h2>Set up command-line scripts</h2>
+<p>Modify <code>package.json</code> to add these scripts:</p>
+<pre><code class="language-js">  <span class="hljs-string">"scripts"</span>: {
+    <span class="hljs-string">"start"</span>: <span class="hljs-string">"legendary-pancake server"</span>,
+    <span class="hljs-string">"build"</span>: <span class="hljs-string">"legendary-pancake build"</span>,
+    <span class="hljs-string">"clean"</span>: <span class="hljs-string">"legendary-pancake clean"</span>
+  }
+</code></pre>
+<p>This allows us to run <code>legendary-pancake</code> easily.</p>
+<h2>Babel</h2>
+<p>Since we’re going to use React and JSX, we have to transpile our JSX (and ES2016)
+code into normal JavaScript. We’ll use Babel:</p>
+<pre><code class="language-bash">yarn add --dev \
+  babel-core \
+  babel-loader \
+  babel-preset-es2015 \
+  babel-preset-es2016 \
+  babel-preset-stage-2 \
+  babel-preset-react
+</code></pre>
+<p>Then we configure Babel by creating a <code>.babelrc</code> file:</p>
+<pre><code class="language-js">{
+  <span class="hljs-string">"presets"</span>: [
+    <span class="hljs-string">"es2015"</span>,
+    <span class="hljs-string">"es2016"</span>,
+    <span class="hljs-string">"stage-2"</span>,
+    <span class="hljs-string">"react"</span>
+  ]
+}
+</code></pre>
+<h2>React</h2>
+<p>Next, we need to install React and React DOM to our project:</p>
+<pre><code class="language-bash">yarn add react react-dom
+</code></pre>
+<h2>legendary-pancake</h2>
+<p>Next, we create a <code>legendary-pancake.config.js</code> file and tell it to load our JavaScript files (in <code>src</code> directory) using <code>babel-loader</code>.</p>
+<pre><code class="language-js"><span class="hljs-meta">'use strict'</span>
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>)
+
+exports.configureWebpack = <span class="hljs-function">(<span class="hljs-params">config</span>) =&gt;</span> {
+  <span class="hljs-comment">// Babel</span>
+  config.module.loaders.push({
+    <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.js$/</span>,
+    <span class="hljs-attr">include</span>: path.join(__dirname, <span class="hljs-string">'src'</span>),
+    <span class="hljs-attr">loader</span>: <span class="hljs-string">'babel-loader'</span>
+  })
+  <span class="hljs-keyword">return</span> config
+}
+</code></pre>
+<p>We defined a <code>configureWebpack</code> function, which will be given a webpack
+configuration object. This function should return a modified webpack
+configuration.</p>
+<blockquote>
+<p>Since the configuration module is simply a JavaScript file, you may create
+a shared configuration and put it on (e.g.) npm so that your projects can
+re-use this configuration.</p>
+</blockquote>
+<h2>Define pages</h2>
+<p>Next, we’ll define our pages.</p>
+<p>Add this to <code>src/pages.js</code>:</p>
+<pre><code class="language-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { Link } <span class="hljs-keyword">from</span> <span class="hljs-string">'legendary-pancake'</span>
+<span class="hljs-keyword">import</span> Layout <span class="hljs-keyword">from</span> <span class="hljs-string">'./Layout'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-string">'/'</span>: <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {
+    callback(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span>Home page<span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span>)
+  },
+  <span class="hljs-string">'/about/'</span>: <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {
+    callback(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span>About page<span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span>)
+  },
+  <span class="hljs-string">'/contact/'</span>: <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {
+    callback(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span>Contact page<span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span>)
+  },
+  <span class="hljs-string">'/404.html'</span>: <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {
+    callback(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span>Contact page<span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span>)
+  }
+}
+</code></pre>
+<p>We defined our pages by exporting an object whose keys are pathnames,
+and whose values are functions. These functions should take a callback and
+calls it with the page’s content.</p>
+<blockquote>
+<p>The pathname <code>/404.html</code> is special, because it will be used when the
+requested pathname is not found.</p>
+</blockquote>
+<blockquote>
+<p>It is important to <strong>always</strong> end a pathname with <code>.html</code> or <code>/</code>,
+because otherwise, you may not be able to host the resulting site
+on a static file server! (such as GitHub pages)</p>
+</blockquote>
+<h2>The Layout</h2>
+<p>Create <code>src/Layout.js</code>; it is used by <code>pages.js</code> (above):</p>
+<pre><code class="language-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Layout</span> (<span class="hljs-params">{ children }</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">'/'</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">'/about/'</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">'/contact/'</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+        {children}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+}
+</code></pre>
+<h2>Development template</h2>
+<p>Next, create an HTML template file, <code>src/dev.html</code>.</p>
+<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ie=edge"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>legendary-pancake development mode<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>This is called a “development template” because it is only used during development.
+This file will be served by the development server.</p>
+<blockquote>
+<p>You don’t need to include any <code>&lt;script&gt;</code> tags, because
+[HtmlPlugin][html-webpack-plugin] will inject the appropriate <code>&lt;script&gt;</code>
+tags into the template.</p>
+</blockquote>
+<p>We will use another kind of template when we build the site into HTML files.
+It is a good idea to keep these templates as small as possible.</p>
+<h2>Browser entry point</h2>
+<p>Next, we will create an entry point for the browser, <code>src/browser.js</code>.</p>
+<pre><code class="language-js"><span class="hljs-keyword">import</span> { createRenderer } <span class="hljs-keyword">from</span> <span class="hljs-string">'legendary-pancake'</span>
+<span class="hljs-keyword">import</span> pages <span class="hljs-keyword">from</span> <span class="hljs-string">'./pages'</span>
+
+<span class="hljs-keyword">const</span> renderer = createRenderer(pages)
+renderer.renderTo(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'app'</span>))
+
+<span class="hljs-keyword">if</span> (<span class="hljs-built_in">module</span>.hot) {
+  <span class="hljs-keyword">const</span> onHotReload = renderer.createHotReloadHandler(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">'./pages'</span>).default)
+  <span class="hljs-built_in">module</span>.hot.accept(<span class="hljs-string">'./pages'</span>, onHotReload)
+}
+</code></pre>
+<p>This file will be run on the client when user loads the page.</p>
+<blockquote>
+<p>The renderer returned by the <code>createRenderer</code> function will take care of
+rendering your pages according to the routes you defined earlier.</p>
+</blockquote>
+<h2>Running the development server</h2>
+<p>All the basic configuration has been set up.
+Now it’s time to run the development server!
+Run this command:</p>
+<pre><code class="language-bash">npm start
+</code></pre>
+<p>If the build is successful, you should see something like this in the Terminal:</p>
+<pre><code>* Preview <span class="hljs-string">at:</span> <span class="hljs-string">http:</span><span class="hljs-comment">//localhost:9000/</span>
+webpack built <span class="hljs-number">55309105e99</span>f2d88fbe8 <span class="hljs-keyword">in</span> <span class="hljs-number">2500</span>ms
+</code></pre>
+<p>Open that URL, then you should be able to navgiate around the site.
+You can edit any file, and you will also see your changes hot-reloaded.</p>
+<h2>Creating a prerenderer</h2>
+<p>Now, to build this site into static HTML files, we need to create a prerenderer.</p>
+<p>Create <code>src/prerenderer.js</code>:</p>
+<pre><code class="language-js"><span class="hljs-keyword">import</span> ReactDOMServer <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom/server'</span>
+<span class="hljs-keyword">import</span> { createPrerenderer } <span class="hljs-keyword">from</span> <span class="hljs-string">'legendary-pancake/prerenderer'</span>
+
+<span class="hljs-keyword">import</span> pages <span class="hljs-keyword">from</span> <span class="hljs-string">'./pages'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> prerenderer = createPrerenderer(pages, {
+  renderPage (content, { stylesheets, javascripts }) {
+    <span class="hljs-keyword">const</span> contentHtml = ReactDOMServer.renderToString(content)
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;My website&lt;/title&gt;
+  <span class="hljs-subst">${stylesheets}</span>
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="app"&gt;<span class="hljs-subst">${contentHtml}</span>&lt;/div&gt;
+  <span class="hljs-subst">${javascripts}</span>
+&lt;/body&gt;
+&lt;/html&gt;`</span>
+  }
+})
+</code></pre>
+<p>This module exports a <code>prerenderer</code>, which contains all the logic needed to
+turn each page into HTML files.</p>
+<h2>Building the static website</h2>
+<p>Now with the prerenderer in place, we can build our project into a static website!
+Run:</p>
+<pre><code class="language-bash">npm run build
+</code></pre>
+<p>You should see an output similar to this:</p>
+<pre><code>* Written build/browser/index.html (<span class="hljs-number">724</span>B)
+* Written build/browser/about/index.html (<span class="hljs-number">727</span>B)
+* Written build/browser/contact/index.html (<span class="hljs-number">729</span>B)
+* Written build/browser/<span class="hljs-number">404.</span>html (<span class="hljs-number">732</span>B)
+* Prerendered <span class="hljs-number">4</span> pages.
+</code></pre>
+<p>If you look in your <code>build/browser</code> directory, you will see all your pages
+are rendered into static HTML files!</p>
+<h2>Previewing the static website</h2>
+<p>Now, with the static website built, we can try serving it up using a static web server!</p>
+<pre><code class="language-bash">yarn global add http-server
+http-server build/browser
+</code></pre>
+<p>Congratulations!</p>
+<p>You have set up a basic legendary-pancake project.</p>
+<h1>How it really works</h1>
+<p>Now, let’s learn how legendary-pancake prerenders your web site.</p>
+<h2>Building static pages</h2>
+<p>When you run <code>legendary-pancake build</code>,</p>
+<ol>
+<li>
+<p>It cleans the <code>build</code> directory.</p>
+</li>
+<li>
+<p>It uses webpack to generate two bundles:</p>
+<ul>
+<li>
+<p><strong>The browser bundle.</strong> It will be run by the client.</p>
+<ul>
+<li>
+<p>Generate a bundle from <code>src/browser.js</code>.</p>
+</li>
+<li>
+<p>Extract CSS using ExtractTextPlugin.</p>
+</li>
+<li>
+<p>Minify the code using UglifyPlugin.</p>
+</li>
+<li>
+<p>Save the assets into <code>build/browser</code> folder.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>The prerendering bundle.</strong> This bundle contains the logic to generate
+static HTML files from your project.</p>
+<ul>
+<li>
+<p>Generate a bundle from <code>src/prerenderer.js</code>, targeting Node.js.</p>
+</li>
+<li>
+<p>Save the assets into <code>build/prerenderer</code> folder.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>It prerenders the pages.</p>
+<ul>
+<li>
+<p>It requires the prerenderer bundle.</p>
+</li>
+<li>
+<p>It asks the prerenderer for the list of available pages that needs to
+be renderered.</p>
+</li>
+<li>
+<p>For each route, it asks the prerenderer to render it.</p>
+</li>
+<li>
+<p>The results are saved to <code>build/browser</code>.</p>
+</li>
+</ul>
+</li>
+</ol>
 </div></main></div></div>
-        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-6f735b445de0fe4cfce1.js'></SCRIPT>
+        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-c48f2e0469f522e6673b.js'></SCRIPT>
       </html>
     
