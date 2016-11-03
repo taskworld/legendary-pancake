@@ -2,6 +2,7 @@ import Helmet from 'react-helmet'
 import React from 'react'
 import { Link } from 'legendary-pancake'
 
+import documentationPages from './documentationPages'
 import HTMLContent from './HTMLContent'
 import Introduction from './Introduction'
 import Layout from './Layout'
@@ -58,24 +59,10 @@ const pages = {
 }
 
 // Advanced usage: Generating documentation from Markdown files...
-//
-const documentationMetadataContext = require.context(
-  'json!front-matter?onlyAttributes!../../../docs',
-  false,
-  /\.md$/
-)
-const documentationContentBundleContext = require.context(
-  'bundle-loader!html-loader!markdown-it-loader!front-matter?onlyBody!../../../docs',
-  false,
-  /\.md$/
-)
-
-for (const key of documentationMetadataContext.keys()) {
-  const metadata = documentationMetadataContext(key)
-  const url = key.replace(/^\.\//, '/docs/').replace(/\.md$/, '/')
+for (const documentationPage of documentationPages) {
+  const { url, metadata } = documentationPage
   pages[url] = (callback) => {
-    const bundle = documentationContentBundleContext(key)
-    bundle((html) => {
+    documentationPage.loadContent((html) => {
       callback(
         <Layout>
           <h1>{metadata.title}</h1>

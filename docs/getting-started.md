@@ -3,7 +3,7 @@ title: Getting started
 order: 1
 ---
 
-As I’ve previously said before, legendary-pancake is an ___advanced___ tool,
+As I’ve probably said before, legendary-pancake is an ___advanced___ tool,
 so it doesn’t try to abstract away from the intricacies of webpack.
 
 # Setting up the project
