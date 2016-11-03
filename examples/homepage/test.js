@@ -19,8 +19,8 @@ describe('generated pages', () => {
   contains('build/pages/index.html', 'css rel="preload" polyfill inlined', 'supports("preload")')
   contains('build/pages/index.html', 'css inlined', 'necolas/normalize.css')
   contains('build/pages/index.html', 'script tag that loads the bundle', '.js\'></SCRIPT>')
-  contains('build/pages/docs/index.html', 'markdown rendered content', 'Need inspiration?')
-  contains('build/pages/readme/index.html', 'redirect to correct path', '"/legendary-pancake/docs/"')
+  contains('build/pages/introduction/index.html', 'markdown rendered content', 'Need inspiration?')
+  contains('build/pages/readme/index.html', 'redirect to correct path', '"/legendary-pancake/introduction/"')
 })
 
 function exists (path) {
