@@ -63,7 +63,7 @@ function toAsset (publicPath) {
 }
 
 function createStylesheets (publicPath, assets) {
-  const stylesheets = (assets
+  const stylesheets = (coerceToArray(assets)
     .filter((file) => /\.css$/.test(file))
     .map(toAsset(publicPath))
   )
@@ -75,7 +75,7 @@ function createStylesheets (publicPath, assets) {
 }
 
 function createScripts (publicPath, assets) {
-  const javascripts = (assets
+  const javascripts = (coerceToArray(assets)
     .filter((file) => /\.js/.test(file))
     .map(toAsset(publicPath))
   )
@@ -84,6 +84,10 @@ function createScripts (publicPath, assets) {
     .join('')
   )
   return javascripts
+}
+
+function coerceToArray (maybeArray) {
+  return Array.isArray(maybeArray) ? maybeArray : [ maybeArray ]
 }
 
 export function defaultRenderRedirectPage (redirectLocation) {

@@ -5,9 +5,15 @@ const path = require('path')
 const bytes = require('bytes')
 const chalk = require('chalk')
 const mkdirp = require('mkdirp')
+const getUserConfigApplier = require('../lib/getUserConfigApplier')
 
 function prerenderPages () {
-  console.log(chalk.bold.cyan('* Prerendering web pages.'))
+  const userConfig = getUserConfigApplier()
+  const targetDirectory = path.join(
+    'build',
+    userConfig.shouldSplitPages() ? 'pages' : 'browser'
+  )
+  console.log(chalk.bold.cyan('* Prerendering web pages to %s.'), targetDirectory)
   const {
     pathnames,
     render
@@ -31,16 +37,16 @@ function prerenderPages () {
     }))
   }
   return Promise.all(promises)
-}
 
-function emit (files) {
-  for (const pathname of Object.keys(files)) {
-    const filename = (path.join('build', 'pages') + '/' + pathname.replace(/^\/+/, '')).replace(/\/$/, '/index.html')
-    const parent = path.dirname(filename)
-    if (!fs.existsSync(parent)) mkdirp.sync(parent)
-    const buffer = new Buffer(files[pathname], 'utf8')
-    fs.writeFileSync(filename, buffer)
-    console.log('* Written %s (%s)', filename, bytes(buffer.length))
+  function emit (files) {
+    for (const pathname of Object.keys(files)) {
+      const filename = (targetDirectory + '/' + pathname.replace(/^\/+/, '')).replace(/\/$/, '/index.html')
+      const parent = path.dirname(filename)
+      if (!fs.existsSync(parent)) mkdirp.sync(parent)
+      const buffer = new Buffer(files[pathname], 'utf8')
+      fs.writeFileSync(filename, buffer)
+      console.log('* Written %s (%s)', filename, bytes(buffer.length))
+    }
   }
 }
 

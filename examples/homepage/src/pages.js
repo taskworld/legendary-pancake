@@ -48,7 +48,7 @@ const pages = {
   },
 
   // 404 page. By convention, use /no-match/.
-  '/no-match/': (callback) => {
+  '/404.html': (callback) => {
     callback(
       <Layout>
         <Helmet title='404???' />
@@ -67,6 +67,7 @@ for (const documentationPage of documentationPages) {
     documentationPage.loadContent((html) => {
       callback(
         <Layout>
+          <Helmet title={metadata.title} />
           <h1>{metadata.title}</h1>
           <HTMLContent html={html} />
         </Layout>

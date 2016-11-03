@@ -9,11 +9,11 @@ __legendary-pancake__ is an ___advanced___ static site generator based on webpac
 
 - __A/B testing.__ We sometimes must generate more than one version of the same page to be able to perform A/B testing.
 
-- __Prerendering.__ As a marketing site, the web page must appear as quickly as possible.
+- __Prerendering.__ As a marketing site, web page performance is very important. The page must appear as quickly as possible. We need to prerender every page into static HTML files, so that they can be served quickly.
 
-- __Code splitting.__ With many pages, it’s too slow to download the entire site’s content. We must be able to group related pages together as well to make navigation between different pages instantaneous.
+- __Code splitting.__ With many pages, it’s too slow to download the entire site’s content. It’s also not good to load each page on demand. We must be able to group related pages together to make navigation between related pages instantaneous.
 
-It is designed for advanced users and gives you total control of:
+Therefore, it has been designed for advanced users and gives you total control of:
 
 - __Your site structure.__
   Unlike [Gatsby](https://github.com/gatsbyjs/gatsby), it doesn’t generate routes based on filesystem layout.
@@ -27,7 +27,7 @@ It is designed for advanced users and gives you total control of:
   You decide how your React element gets turned into an HTML file.
 
   You can use libraries like [react-document-title](https://github.com/gaearon/react-document-title), [react-helmet](https://github.com/nfl/react-helmet) to help with `<head>` elements, or roll your own solution.
-  Inline your CSS or JS in your HTML file, or put it in another chunk. It’s all up to you.
+  Inline your critical CSS or JS in your HTML file, or just use normal `<script>` tags. It’s all up to you.
 
 - __Route loading.__ legendary-pancake has no preference on how to load your page contents. For small sites, you can package the entire site content in a single bundle.
 
@@ -36,9 +36,7 @@ It is designed for advanced users and gives you total control of:
   You’re in total control.
 
 - __Your deployment process.__
-  The pages will be built in `build/pages` and other webpack assets in `build/browser`.
-  The rest is up to you.
-  By separating the data from the assets, this allows for some advanced use-cases, such as A/B testing a static site.
+  legendary-pancake can be configured to render pages into a different directory from the webpack assets. This allows for some advanced use-cases, such as A/B testing a static site.
 
 But `legendary-pancake` will take care of these for you:
 
@@ -46,7 +44,7 @@ But `legendary-pancake` will take care of these for you:
   It comes with a CLI tool to run the development server and generate the static site.
 
 - __Managing URLs and route transitions.__
-  legendary-pancake preconfigures React Router to support asynchronous routing and prerendering at the same time, and abstracts it away behind an API that is more suited for static routes.
+  legendary-pancake preconfigures React Router to support asynchronous routing and prerendering at the same time.
 
 
 ## Examples

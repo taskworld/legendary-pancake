@@ -11,16 +11,16 @@ describe('webpack stats', () => {
 })
 
 describe('generated pages', () => {
-  exists('build/pages/index.html')
-  contains('build/pages/index.html', 'page title', 'Home page - legendary-pancake')
-  contains('build/pages/index.html', 'rendered content', 'static site builder based on React')
-  contains('build/pages/index.html', 'google fonts as preload assets', 'rel="preload"')
-  contains('build/pages/index.html', 'loadCSS inlined', 'loadCSS')
-  contains('build/pages/index.html', 'css rel="preload" polyfill inlined', 'supports("preload")')
-  contains('build/pages/index.html', 'css inlined', 'necolas/normalize.css')
-  contains('build/pages/index.html', 'script tag that loads the bundle', '.js\'></SCRIPT>')
-  contains('build/pages/docs/index.html', 'markdown rendered content', 'Need inspiration?')
-  contains('build/pages/readme/index.html', 'redirect to correct path', '"/legendary-pancake/docs/"')
+  exists('build/browser/index.html')
+  contains('build/browser/index.html', 'page title', 'Home page - legendary-pancake')
+  contains('build/browser/index.html', 'rendered content', 'static site builder based on React')
+  contains('build/browser/index.html', 'google fonts as preload assets', 'rel="preload"')
+  contains('build/browser/index.html', 'loadCSS inlined', 'loadCSS')
+  contains('build/browser/index.html', 'css rel="preload" polyfill inlined', 'supports("preload")')
+  contains('build/browser/index.html', 'css inlined', 'necolas/normalize.css')
+  contains('build/browser/index.html', 'script tag that loads the bundle', '.js\'></SCRIPT>')
+  contains('build/browser/docs/index.html', 'markdown rendered content', 'Need inspiration?')
+  contains('build/browser/readme/index.html', 'redirect to correct path', '"/legendary-pancake/docs/"')
 })
 
 function exists (path) {
