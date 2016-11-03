@@ -2,10 +2,11 @@ import Helmet from 'react-helmet'
 import React from 'react'
 import { Link } from 'legendary-pancake'
 
-import Docs from './Docs'
+import HTMLContent from './HTMLContent'
+import Introduction from './Introduction'
 import Layout from './Layout'
 
-export default {
+const pages = {
   // Front page
   '/': (callback) => {
     callback(
@@ -13,21 +14,21 @@ export default {
         <Helmet title='Home page' />
         <h1>Home page</h1>
         <p><strong>legendary-pancake</strong> is an <strong><em>advanced</em></strong> static site builder based on React.js, webpack, and React Router.</p>
-        <p>Read the <Link to='/docs/'>documentation</Link>?</p>
+        <p>Read the <Link to='/introduction/'>introduction</Link>?</p>
       </Layout>
     )
   },
 
   // A redirect
-  '/readme/': '/docs/',
+  '/readme/': '/introduction/',
 
   // A synchronous route
-  '/docs/': (callback) => {
+  '/introduction/': (callback) => {
     callback(
       <Layout>
-        <Helmet title='Docs' />
-        <h1>Docs</h1>
-        <Docs />
+        <Helmet title='Introduction' />
+        <h1>Introduction</h1>
+        <Introduction />
       </Layout>
     )
   },
@@ -55,3 +56,34 @@ export default {
     )
   }
 }
+
+// Advanced usage: Generating documentation from Markdown files...
+//
+const documentationMetadataContext = require.context(
+  'json!front-matter?onlyAttributes!../../../docs',
+  false,
+  /\.md$/
+)
+const documentationContentBundleContext = require.context(
+  'bundle-loader!html-loader!markdown-it-loader!front-matter?onlyBody!../../../docs',
+  false,
+  /\.md$/
+)
+
+for (const key of documentationMetadataContext.keys()) {
+  const metadata = documentationMetadataContext(key)
+  const url = key.replace(/^\.\//, '/docs/').replace(/\.md$/, '/')
+  pages[url] = (callback) => {
+    const bundle = documentationContentBundleContext(key)
+    bundle((html) => {
+      callback(
+        <Layout>
+          <h1>{metadata.title}</h1>
+          <HTMLContent html={html} />
+        </Layout>
+      )
+    })
+  }
+}
+
+export default pages
