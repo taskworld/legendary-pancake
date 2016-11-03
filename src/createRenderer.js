@@ -100,7 +100,9 @@ export function createRenderer (pages, {
           const nextPathname = nextState.location.pathname
           const nextPage = resolvePage(pages, nextPathname)
           if (typeof nextPage === 'string') {
+            console.log('Redirect', nextPage)
             replace(nextPage)
+            callback()
           } else {
             handlePathname(nextPathname, callback)
           }
