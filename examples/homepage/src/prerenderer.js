@@ -16,9 +16,9 @@ export const prerenderer = createPrerenderer(pages, {
           <meta http-equiv="X-UA-Compatible" content="ie=edge">
           ${head.title.toString()}
           ${head.meta.toString()}
-          ${head.script.toString()}
           ${head.link.toString()}
-          ${stylesheets}
+          ${head.script.toString()}
+          ${stylesheets.map(toInline).join('')}
         </head>
         <div id='app'>${contentHtml}</div>
         ${javascripts}
@@ -27,3 +27,7 @@ export const prerenderer = createPrerenderer(pages, {
     return html
   }
 })
+
+function toInline (stylesheet) {
+  return `<STYLE>${stylesheet.content}</STYLE>`
+}

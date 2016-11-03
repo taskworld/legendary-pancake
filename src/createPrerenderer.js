@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import React from 'react'
 import { createMemoryHistory, match, RouterContext, Route } from 'react-router'
 
@@ -13,8 +15,8 @@ export function createPrerenderer (pages, {
     const history = createMemoryHistory()
     const location = history.createLocation(pathname)
     const page = resolvePage(pages, pathname)
-    const stylesheets = createStyleString(stats.publicPath, stats.assetsByChunkName.main)
-    const javascripts = createScriptString(stats.publicPath, stats.assetsByChunkName.main)
+    const stylesheets = createStylesheets(stats.publicPath, stats.assetsByChunkName.main)
+    const javascripts = createScripts(stats.publicPath, stats.assetsByChunkName.main)
     const renderOptions = { pathname, stylesheets, javascripts, stats }
     if (typeof page === 'string') {
       try {
@@ -45,22 +47,43 @@ export function createPrerenderer (pages, {
   }
 }
 
-function createStyleString (publicPath, assets) {
-  let stylesheets = assets.filter((file) => {
-    return /\.css$/.test(file)
-  })
-  return stylesheets.map((file) =>
-    `<LINK HREF='${publicPath}${file}' REL='stylesheet' />`
-  ).join('')
+function toAsset (publicPath) {
+  return (assetPath) => {
+    let fileContent = null
+    return {
+      url: `${publicPath}${assetPath}`,
+      get content () {
+        if (fileContent == null) {
+          fileContent = fs.readFileSync(path.join('build', 'browser', assetPath), 'utf8')
+        }
+        return fileContent
+      }
+    }
+  }
 }
 
-function createScriptString (publicPath, assets) {
-  let scripts = assets.filter((file) => {
-    return /\.js/.test(file)
-  })
-  return scripts.map((file) =>
-    `<SCRIPT SRC='${publicPath}${file}'></SCRIPT>`
-  ).join('')
+function createStylesheets (publicPath, assets) {
+  const stylesheets = (assets
+    .filter((file) => /\.css$/.test(file))
+    .map(toAsset(publicPath))
+  )
+  stylesheets.toString = () => (stylesheets
+    .map(({ url }) => `<LINK HREF='${url}' REL='stylesheet' />`)
+    .join('')
+  )
+  return stylesheets
+}
+
+function createScripts (publicPath, assets) {
+  const javascripts = (assets
+    .filter((file) => /\.js/.test(file))
+    .map(toAsset(publicPath))
+  )
+  javascripts.toString = () => (javascripts
+    .map(({ url }) => `<SCRIPT SRC='${url}'></SCRIPT>`)
+    .join('')
+  )
+  return javascripts
 }
 
 export function defaultRenderRedirectPage (redirectLocation) {
