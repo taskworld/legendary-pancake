@@ -3392,6 +3392,10 @@ markdown-it:
     mdurl "^1.0.1"
     uc.micro "^1.0.3"
 
+markdown-it-attrs:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-attrs/-/markdown-it-attrs-0.8.0.tgz#11ad35725f01d7e249e897d7ce8b21403dc28f16"
+
 markdown-it-loader:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/markdown-it-loader/-/markdown-it-loader-0.5.0.tgz#e07a0e96eb0b686f7015497d372effcdb745490a"

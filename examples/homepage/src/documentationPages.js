@@ -36,12 +36,29 @@ const documentationContentBundleContext = require.context(
 //
 export const documentationPages = documentationMetadataContext.keys().map((key) => {
   const metadata = documentationMetadataContext(key)
-  const url = key.replace(/^\.\//, '/docs/').replace(/\.md$/, '/')
+  const pathname = key.replace(/^\.\//, '/docs/').replace(/\.md$/, '/')
   return {
-    url,
+    key,
+    pathname,
     metadata,
-    loadContent: documentationContentBundleContext(key)
+    loadContent: (callback) => {
+      documentationContentBundleContext(key)((html) => {
+        callback(rerouteLinks(html))
+      })
+    }
   }
 })
+
+// Rewrite links to direct to the correct page.
+function rerouteLinks (html) {
+  return html.replace(/href="(\.\/[a-z0-9\-]+\.md)"/g, (all, key) => {
+    const found = documentationPages.filter((page) => page.key === key)[0]
+    if (!found) return all
+    /* global __legendary_pancake_base_pathname__ */
+    const base = __legendary_pancake_base_pathname__ // eslint-disable-line camelcase
+    const pathname = found.pathname
+    return `href="${base}${pathname}" data-to="${pathname}"`
+  })
+}
 
 export default documentationPages

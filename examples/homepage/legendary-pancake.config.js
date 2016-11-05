@@ -33,5 +33,9 @@ exports.configureWebpack = (config, { css }) => {
     }
   )
   config.output.publicPath = '/legendary-pancake/'
+  config['markdown-it'] = {
+    typographer: true,
+    use: [ require('markdown-it-attrs') ]
+  }
   return config
 }

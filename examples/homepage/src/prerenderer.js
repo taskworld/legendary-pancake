@@ -18,6 +18,7 @@ export const prerenderer = createPrerenderer(pages, {
           ${head.meta.toString()}
           ${head.link.toString()}
           ${head.script.toString()}
+          ${require('./fonts')}
           ${stylesheets.map(toInline).join('')}
         </head>
         <div id='app'>${contentHtml}</div>

@@ -72,7 +72,6 @@ function getConfig () {
 
   return userConfigApplier.applyWebpackConfig(config, {
     webpack,
-    target: 'browser',
     env: 'development',
     css: (loaders) => require.resolve('style-loader') + '!' + loaders
   })

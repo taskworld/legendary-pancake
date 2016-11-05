@@ -62,8 +62,8 @@ const pages = {
 // Markdown files...
 //
 for (const documentationPage of documentationPages) {
-  const { url, metadata } = documentationPage
-  pages[url] = (callback) => {
+  const { pathname, metadata } = documentationPage
+  pages[pathname] = (callback) => {
     documentationPage.loadContent((html) => {
       callback(
         <Layout>

@@ -91,7 +91,6 @@ function getConfig () {
 
     return userConfigApplier.applyWebpackConfig(config, {
       webpack,
-      target: 'browser',
       env: 'production',
       css: (loaders) => extractTextPlugin.extract(loaders)
     })
@@ -135,7 +134,6 @@ function getConfig () {
 
     return userConfigApplier.applyWebpackConfig(config, {
       webpack,
-      target: 'browser',
       env: 'prerenderer',
       css: (loaders) => extractTextPlugin.extract(loaders)
     })

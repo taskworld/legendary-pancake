@@ -4,7 +4,10 @@ import React from 'react'
 
 function HTMLContent ({ html }) {
   return (
-    <div className='HTMLContent' dangerouslySetInnerHTML={{ __html: html }} />
+    <div
+      className='HTMLContent'
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   )
 }
 
