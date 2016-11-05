@@ -1,5 +1,9 @@
 import React from 'react'
 
+// # LoadingStateContainer {#LoadingStateContainer}
+//
+// A React component that lets you render a loading indicator.
+//
 export class LoadingStateContainer extends React.Component {
   constructor (props, context) {
     super(props, context)
@@ -21,6 +25,11 @@ export class LoadingStateContainer extends React.Component {
   }
 }
 LoadingStateContainer.propTypes = {
+  // It takes the following props:
+  //
+  // - `renderContent(loading)` This prop will be called with a boolean value
+  //   `loading` and should return the thing that this component should render.
+  //
   renderContent: React.PropTypes.func.isRequired
 }
 LoadingStateContainer.contextTypes = {

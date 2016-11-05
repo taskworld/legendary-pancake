@@ -22,7 +22,7 @@ const documentationMetadataContext = require.context(
 //   separate chunk, and returns a function to load that chunk asynchronously.
 //
 const documentationContentBundleContext = require.context(
-  'bundle-loader?lazy!html-loader!markdown-it-loader!front-matter?onlyBody!../../../docs',
+  'bundle-loader?lazy!html-loader!markdown-it-loader!../lib/include-comments-loader!front-matter?onlyBody!../../../docs',
   false,
   /\.md$/
 )

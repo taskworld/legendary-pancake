@@ -1730,7 +1730,7 @@ escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
 
-escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5, escape-string-regexp@1.0.5:
+escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.4, escape-string-regexp@^1.0.5, escape-string-regexp@1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
@@ -4977,6 +4977,13 @@ strict-uri-encode@^1.0.0:
 string_decoder@~0.10.25, string_decoder@~0.10.x:
   version "0.10.31"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
+
+string-replace-async:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/string-replace-async/-/string-replace-async-1.2.0.tgz#0398d1d2d55a9c51c9b0f6a29d5a167e56c18cf1"
+  dependencies:
+    escape-string-regexp "^1.0.4"
+    object-assign "^4.0.1"
 
 string-template@~0.2.0:
   version "0.2.1"

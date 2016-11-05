@@ -7,15 +7,46 @@ import { createStore } from 'redux'
 
 import resolvePage from './resolvePage'
 
-// Creates a renderer object that can render the static page into the DOM.
-export function createRenderer (pages, {
-  renderPage = (page) => page,
-  onLocationChange = () => { }
-} = { }) {
+// # createRenderer(pages, options) {#createRenderer}
+//
+// Creates a renderer object that can render the provided pages into the DOM.
+//
+// - `pages` A mapping from pathname to a page function.
+//
+// - `options` An [RendererOptions](#RendererOptions) object.
+//
+// Returns a [Renderer](#Renderer).
+//
+export function createRenderer (pages, options = { }) {
   const manager = createManager()
+
+  // ## RendererOptions {#RendererOptions}
+  //
+  const {
+    // ### renderPage(page)
+    //
+    // This function will be called prior to rendering the page. It will receive
+    // the page content (a React node) and should return what should be rendered
+    // (a React node).
+    //
+    // Default is an identity function. But you can customize this function
+    // if you want to add contexts.
+    //
+    renderPage = (page) => page,
+
+    // ### onLocationChange(location)
+    //
+    // This function will be called when the location changes. Useful for
+    // tracking analytic pageviews.
+    //
+    // Default is a no-op function.
+    //
+    onLocationChange = () => { }
+  } = options
+
   let currentPathname
 
-  // This component subscribes to the manager and renders its content.
+  // -- This component subscribes to the manager and renders its content.
   class PageRenderer extends React.Component {
     constructor (props) {
       super(props)
@@ -45,7 +76,7 @@ export function createRenderer (pages, {
     legendaryPancakeManager: React.PropTypes.object
   }
 
-  // Loads the page and give the content to the manager, and fire callback.
+  // -- Loads the page and give the content to the manager, and fire callback.
   function handlePathname (pathname, callback) {
     currentPathname = pathname
     const nextPage = resolvePage(pages, pathname)
@@ -71,12 +102,19 @@ export function createRenderer (pages, {
     }
   }
 
-  function createHotReloadHandler (getPages) {
-    return () => replacePages(getPages())
-  }
-
+  // ## Renderer {#Renderer}
+  //
+  // Created by [createRenderer](#createRenderer)().
+  //
   return {
-    // Loads the first page, then renders the router into the DOM.
+    // ### renderTo(container)
+    //
+    // Renders the static site into the DOM.
+    //
+    // * `container` A DOM element to render the site to.
+    //
+    // It will load the first page content before mounting the React Router.
+    //
     renderTo (container) {
       /* global __legendary_pancake_base_pathname__ */
       const basename = __legendary_pancake_base_pathname__.replace(/\/$/, '')
@@ -116,11 +154,19 @@ export function createRenderer (pages, {
       })
     },
 
-    createHotReloadHandler
+    // ### createHotReloadHandler(getPages)
+    //
+    // Creates a hot reload handler suitable for using with `module.hot.accept`.
+    //
+    // See [Getting Started](./getting-started.md) guide for example.
+    //
+    createHotReloadHandler (getPages) {
+      return () => replacePages(getPages())
+    }
   }
 }
 
-// Creates a content manager which stores the content to render.
+// -- Creates a content manager which stores the content to render.
 function createManager () {
   const store = createStore(reducer)
   return {

@@ -43,4 +43,4 @@ We used a helper, `pancake.css`, to load the CSS in an appropriate way.
 - During development, CSS is loaded using `style-loader`.
 
 - During build, the CSS is extracted using ExtractTextPlugin and saved into a CSS file.
-  The extracted CSS file will be available inside `extra.stylesheets` during prerendering.
+  The extracted CSS file will be available inside `renderContext.stylesheets` during prerendering.
