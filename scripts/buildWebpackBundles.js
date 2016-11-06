@@ -57,7 +57,7 @@ function getConfig () {
 
     const config = {
       entry: {
-        main: './src/browser.js'
+        main: userConfigApplier.getBrowserEntryFile()
       },
       output: {
         publicPath: '/',
@@ -101,7 +101,7 @@ function getConfig () {
 
     const config = {
       entry: {
-        prerenderer: './src/prerenderer.js'
+        prerenderer: userConfigApplier.getPrerendererConfig()
       },
       output: {
         publicPath: '/',

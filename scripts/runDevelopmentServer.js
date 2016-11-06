@@ -41,7 +41,10 @@ function getConfig () {
 
   const config = {
     entry: {
-      main: [ './src/browser.js', require.resolve('webpack-hot-middleware/client') ]
+      main: [
+        userConfigApplier.getBrowserEntryFile(),
+        require.resolve('webpack-hot-middleware/client')
+      ]
     },
     output: {
       publicPath: '/',
@@ -58,7 +61,9 @@ function getConfig () {
     plugins: [
       new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.HotModuleReplacementPlugin(),
-      new HtmlWebpackPlugin({ template: './src/dev.html' }),
+      new HtmlWebpackPlugin({
+        template: userConfigApplier.getDevelopmentTemplateFile()
+      }),
       new webpack.DefinePlugin({
         'process.env': {
           'NODE_ENV': JSON.stringify('development')
