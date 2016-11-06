@@ -101,7 +101,7 @@ function getConfig () {
 
     const config = {
       entry: {
-        prerenderer: userConfigApplier.getPrerendererConfig()
+        prerenderer: userConfigApplier.getPrerendererEntryFile()
       },
       output: {
         publicPath: '/',
