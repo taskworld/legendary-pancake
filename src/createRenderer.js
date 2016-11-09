@@ -46,6 +46,10 @@ export function createRenderer (pages, options = { }) {
 
   let currentPathname
 
+  const componentContext = {
+    manager
+  }
+
   // -- This component subscribes to the manager and renders its content.
   class PageRenderer extends React.Component {
     constructor (props) {
@@ -60,7 +64,7 @@ export function createRenderer (pages, options = { }) {
       return this.state.content !== nextState.content
     }
     getChildContext () {
-      return { legendaryPancakeManager: manager }
+      return { legendaryPancake: componentContext }
     }
     componentWillUnmount () {
       this.unsubscribe()
@@ -73,7 +77,7 @@ export function createRenderer (pages, options = { }) {
     location: React.PropTypes.object.isRequired // from react-router
   }
   PageRenderer.childContextTypes = {
-    legendaryPancakeManager: React.PropTypes.object
+    legendaryPancake: React.PropTypes.object
   }
 
   // -- Loads the page and give the content to the manager, and fire callback.

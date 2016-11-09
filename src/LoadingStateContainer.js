@@ -7,7 +7,7 @@ import React from 'react'
 export class LoadingStateContainer extends React.Component {
   constructor (props, context) {
     super(props, context)
-    const manager = context.legendaryPancakeManager
+    const manager = context.legendaryPancake.manager
     this.manager = manager
     this.state = { loading: manager ? manager.isLoading() : false }
   }
@@ -33,7 +33,7 @@ LoadingStateContainer.propTypes = {
   renderContent: React.PropTypes.func.isRequired
 }
 LoadingStateContainer.contextTypes = {
-  legendaryPancakeManager: React.PropTypes.object
+  legendaryPancake: React.PropTypes.object
 }
 
 export default LoadingStateContainer
