@@ -8,6 +8,14 @@ import { rebasePathname } from './PathUtils'
 // A React component that renders a link.
 //
 export class Link extends React.Component {
+  static contextTypes = {
+    legendaryPancake: React.PropTypes.object
+  }
+  static propTypes = {
+    to: React.PropTypes.string,
+    activeClassName: React.PropTypes.string,
+    children: React.PropTypes.node
+  }
   constructor (props, context) {
     super(props, context)
     const manager = context.legendaryPancake.manager
@@ -51,16 +59,6 @@ export class Link extends React.Component {
     this.context.legendaryPancake.go(this.props.to)
     event.preventDefault()
   }
-}
-
-Link.contextTypes = {
-  legendaryPancake: React.PropTypes.object
-}
-
-Link.propTypes = {
-  to: React.PropTypes.string,
-  activeClassName: React.PropTypes.string,
-  children: React.PropTypes.node
 }
 
 export default Link

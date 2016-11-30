@@ -43,6 +43,7 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.0",
+    "babel-eslint": "^7.1.1",
     "babel-preset-react": "^6.16.0",
     "chokidar": "^1.6.1",
     "standard": "^8.5.0"
@@ -50,5 +51,8 @@
   "peerDependencies": {
     "react": "^15.0.0",
     "react-dom": "^15.0.0"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }

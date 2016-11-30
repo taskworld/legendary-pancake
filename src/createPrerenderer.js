@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import React from 'react'
-import { createMemoryHistory, match, RouterContext, Route } from 'react-router'
 
 import resolvePage from './resolvePage'
 
@@ -52,8 +51,6 @@ export function createPrerenderer (pages, options) {
   return { render, pathnames: Object.keys(pages) }
 
   function render ({ pathname, stats }, callback) {
-    const history = createMemoryHistory()
-    const location = history.createLocation(pathname)
     const page = resolvePage(pages, pathname)
     const stylesheets = createStylesheets(stats.publicPath, stats.assetsByChunkName.main)
     const javascripts = createScripts(stats.publicPath, stats.assetsByChunkName.main)
@@ -99,24 +96,36 @@ export function createPrerenderer (pages, options) {
       }
     } else {
       page((content) => {
-        const PageRenderer = () => content
-        const routes = <Route path={pathname} component={PageRenderer} />
-        match({ routes, location }, (error, redirectLocation, renderProps) => {
-          if (error) {
-            return callback(error)
-          }
-          if (!renderProps) {
-            return callback(new Error('react-router did not send renderProps!!!!!'))
-          }
-          try {
-            const result = renderPage(<RouterContext {...renderProps} />, renderContext)
-            callback(null, result)
-          } catch (e) {
-            return callback(e)
-          }
-        })
+        try {
+          const element = <PageRenderer content={content} pathname={pathname} />
+          const result = renderPage(element, renderContext)
+          callback(null, result)
+        } catch (e) {
+          return callback(e)
+        }
       })
     }
+  }
+}
+
+class PageRenderer extends React.Component {
+  static childContextTypes = {
+    legendaryPancake: React.PropTypes.object
+  }
+  getChildContext () {
+    return {
+      legendaryPancake: {
+        manager: {
+          getContent: () => this.props.content,
+          getCurrentPathname: () => this.props.pathname,
+          isLoading: () => false,
+          isReady: () => true
+        }
+      }
+    }
+  }
+  render () {
+    return this.props.content
   }
 }
 
