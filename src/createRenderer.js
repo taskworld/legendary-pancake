@@ -1,11 +1,9 @@
-import useScroll from 'react-router-scroll/lib/useScroll'
 import React from 'react'
-import { createHistory } from 'history'
 import { render } from 'react-dom'
-import { applyRouterMiddleware, Router, Route, useRouterHistory } from 'react-router'
 import { createStore } from 'redux'
 
 import resolvePage from './resolvePage'
+import { stripBasenameFromPathname, rebasePathname } from './PathUtils'
 
 // # createRenderer(pages, options) {#createRenderer}
 //
@@ -19,6 +17,7 @@ import resolvePage from './resolvePage'
 //
 export function createRenderer (pages, options = { }) {
   const manager = createManager()
+  const scrollRestorationStorage = { }
 
   // ## RendererOptions {#RendererOptions}
   //
@@ -44,10 +43,16 @@ export function createRenderer (pages, options = { }) {
     onLocationChange = () => { }
   } = options
 
-  let currentPathname
-
   const componentContext = {
-    manager
+    manager,
+    go (targetPathname) {
+      window.history.pushState(null, null, rebasePathname(targetPathname))
+      loadPageFromLocation(() => {
+        if (!window.location.hash) {
+          window.scrollTo(0, 0)
+        }
+      })
+    }
   }
 
   // -- This component subscribes to the manager and renders its content.
@@ -73,37 +78,77 @@ export function createRenderer (pages, options = { }) {
       return renderPage(this.state.content)
     }
   }
-  PageRenderer.propTypes = {
-    location: React.PropTypes.object.isRequired // from react-router
-  }
   PageRenderer.childContextTypes = {
     legendaryPancake: React.PropTypes.object
   }
 
-  // -- Loads the page and give the content to the manager, and fire callback.
-  function handlePathname (pathname, callback) {
-    currentPathname = pathname
+  function handlePathname (pathname, onFinish) {
     const nextPage = resolvePage(pages, pathname)
+    if (typeof nextPage === 'string') {
+      window.history.replaceState(null, null, rebasePathname(nextPage))
+      return handlePathname(nextPage)
+    }
+    if (pathname === manager.getCurrentPathname()) {
+      return
+    }
     let loaded = false
     let asynchronously = false
     nextPage((nextContent) => {
       manager.handleContentLoaded(pathname, nextContent, { asynchronously })
       loaded = true
-      callback()
+      if (onFinish) onFinish()
     })
     if (!loaded) {
       manager.handleContentLoadStarted(pathname)
       asynchronously = true
     }
+    onLocationChange({ pathname })
   }
+
+  let previousRestorationId = null
+  function loadPageFromLocation (onFinish) {
+    const restorationId = (() => {
+      if (!window.history.state) {
+        const newId = generateNewRestorationId()
+        window.history.replaceState({ restorationId: newId }, null, window.location.href)
+        return newId
+      } else {
+        return window.history.state.restorationId
+      }
+    })()
+    const pathname = stripBasenameFromPathname(window.location.pathname)
+    handlePathname(pathname, () => {
+      if (onFinish) onFinish()
+      if (manager.getCurrentPathname() === pathname) {
+        if (previousRestorationId !== restorationId) {
+          const state = scrollRestorationStorage[restorationId]
+          const position = state && state.scrollPosition
+          if (position) {
+            window.scrollTo(position[0], position[1])
+          }
+        }
+      }
+    })
+  }
+
+  loadPageFromLocation()
+
+  window.addEventListener('popstate', () => {
+    loadPageFromLocation()
+  })
+
+  window.addEventListener('scroll', () => {
+    const state = window.history.state
+    const id = state && state.restorationId
+    if (!id) return
+    scrollRestorationStorage[id] = {
+      scrollPosition: [ window.scrollX, window.scrollY ]
+    }
+  })
 
   function replacePages (nextPages) {
     pages = nextPages
-    if (currentPathname) {
-      handlePathname(currentPathname, () => {
-        console.log('[legendary-pancake] Hot reloaded!')
-      })
-    }
+    loadPageFromLocation()
   }
 
   // ## Renderer {#Renderer}
@@ -120,42 +165,20 @@ export function createRenderer (pages, options = { }) {
     // It will load the first page content before mounting the React Router.
     //
     renderTo (container) {
-      /* global __legendary_pancake_base_pathname__ */
-      const basename = __legendary_pancake_base_pathname__.replace(/\/$/, '')
-      const browserHistory = useRouterHistory(createHistory)({ basename })
+      // Wait for manager to be ready...
+      const unsubscribe = manager.subscribe(handleManagerStateChange)
+      handleManagerStateChange()
 
-      const initialLocation = browserHistory.getCurrentLocation()
-      const initialPathname = initialLocation.pathname
-      const initialPage = resolvePage(pages, initialPathname)
-
-      if (typeof initialPage === 'string') {
-        window.location.replace(basename + initialPage)
-        return
+      function handleManagerStateChange () {
+        if (manager.isReady()) {
+          unsubscribe()
+          renderPage()
+        }
       }
 
-      onLocationChange(initialLocation)
-      browserHistory.listen(onLocationChange)
-
-      initialPage((initialContent) => {
-        manager.handleContentLoaded(initialPathname, initialContent, { asynchronously: false })
-        function onEnter (nextState, replace, callback) {
-          const nextPathname = nextState.location.pathname
-          const nextPage = resolvePage(pages, nextPathname)
-          if (typeof nextPage === 'string') {
-            console.log('Redirect', nextPage)
-            replace(nextPage)
-            callback()
-          } else {
-            handlePathname(nextPathname, callback)
-          }
-        }
-        const element = (
-          <Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
-            <Route path='*' component={PageRenderer} onEnter={onEnter} />
-          </Router>
-        )
-        render(element, container)
-      })
+      function renderPage () {
+        render(<PageRenderer />, container)
+      }
     },
 
     // ### createHotReloadHandler(getPages)
@@ -170,18 +193,61 @@ export function createRenderer (pages, options = { }) {
   }
 }
 
+function generateNewRestorationId () {
+  return Date.now() + ':' + Math.random()
+}
+
 // -- Creates a content manager which stores the content to render.
 function createManager () {
+  const INITIAL_STATE = {
+    content: null,
+    loading: true,
+    currentPathname: null,
+    nextPathname: null
+  }
+
   const store = createStore(reducer)
-  return {
+
+  function reducer (state = INITIAL_STATE, action) {
+    switch (action.type) {
+      case 'CONTENT_LOADED':
+        if (!action.asynchronously || action.pathname === state.nextPathname) {
+          return {
+            content: action.content,
+            loading: false,
+            currentPathname: action.pathname,
+            nextPathname: null
+          }
+        } else {
+          return state
+        }
+      case 'CONTENT_LOAD_STARTED':
+        return {
+          content: state.content,
+          loading: true,
+          currentPathname: state.pathname,
+          nextPathname: action.pathname
+        }
+      default:
+        return state
+    }
+  }
+
+  const manager = {
     subscribe (callback) {
       return store.subscribe(callback)
     },
     getContent () {
       return store.getState().content
     },
+    getCurrentPathname () {
+      return store.getState().currentPathname
+    },
     isLoading () {
       return store.getState().loading
+    },
+    isReady () {
+      return !!store.getState().content
     },
     handleContentLoaded (pathname, content, { asynchronously }) {
       store.dispatch({ type: 'CONTENT_LOADED', pathname, content, asynchronously })
@@ -191,20 +257,7 @@ function createManager () {
     }
   }
 
-  function reducer (state = { content: null, loading: true, pathname: null }, action) {
-    switch (action.type) {
-      case 'CONTENT_LOADED':
-        if (!action.asynchronously || action.pathname === state.pathname) {
-          return { content: action.content, loading: false, pathname: action.pathname }
-        } else {
-          return state
-        }
-      case 'CONTENT_LOAD_STARTED':
-        return { content: state.content, loading: true, pathname: action.pathname }
-      default:
-        return state
-    }
-  }
+  return manager
 }
 
 export default createRenderer

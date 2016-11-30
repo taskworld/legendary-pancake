@@ -1,6 +1,5 @@
-import { Link } from 'react-router'
-
 import createRenderer from './createRenderer'
+import Link from './Link'
 import LoadingStateContainer from './LoadingStateContainer'
 
 // # Browser API

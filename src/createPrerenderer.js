@@ -5,7 +5,7 @@ import { createMemoryHistory, match, RouterContext, Route } from 'react-router'
 
 import resolvePage from './resolvePage'
 
-// # createPrerenderer(pages, options)
+// # createPrerenderer(pages, options) {#createPrerenderer}
 //
 // Creates a prerenderer object that can render the provided pages into static
 // website.

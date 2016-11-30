@@ -9,7 +9,7 @@ export class LoadingStateContainer extends React.Component {
     super(props, context)
     const manager = context.legendaryPancake.manager
     this.manager = manager
-    this.state = { loading: manager ? manager.isLoading() : false }
+    this.state = { loading: manager.isLoading() }
   }
   componentDidMount () {
     const manager = this.manager
