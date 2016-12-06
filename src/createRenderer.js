@@ -19,6 +19,8 @@ export function createRenderer (pages, options = { }) {
   const manager = createManager()
   const scrollRestorationStorage = { }
 
+  let dirty = false // for hot reloading
+
   // ## RendererOptions {#RendererOptions}
   //
   const {
@@ -89,7 +91,8 @@ export function createRenderer (pages, options = { }) {
       return handlePathname(nextPage)
     }
     if (pathname === manager.getCurrentPathname()) {
-      return
+      if (!dirty) return
+      dirty = false
     }
     let loaded = false
     let asynchronously = false
@@ -148,6 +151,7 @@ export function createRenderer (pages, options = { }) {
 
   function replacePages (nextPages) {
     pages = nextPages
+    dirty = true
     loadPageFromLocation()
   }
 
