@@ -48,6 +48,10 @@ export function createRenderer (pages, options = { }) {
   const componentContext = {
     manager,
     go (targetPathname) {
+      if (!window.history.pushState) {
+        window.location.href = rebasePathname(targetPathname)
+        return
+      }
       window.history.pushState(null, null, rebasePathname(targetPathname))
       loadPageFromLocation(() => {
         if (!window.location.hash) {
@@ -113,7 +117,10 @@ export function createRenderer (pages, options = { }) {
     const restorationId = (() => {
       if (!window.history.state) {
         const newId = generateNewRestorationId()
-        window.history.replaceState({ restorationId: newId }, null, window.location.href)
+        if (window.history.replaceState) {
+          const state = { restorationId: newId }
+          window.history.replaceState(state, null, window.location.href)
+        }
         return newId
       } else {
         return window.history.state.restorationId
