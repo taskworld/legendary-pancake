@@ -46,18 +46,16 @@ export class Link extends React.Component {
   }
   onClick = (e) => {
     if (this.props.onClick) this.props.onClick(e)
-    if (!e.defaultPrevented) this.handleLink(e)
+    if (!e.isDefaultPrevented()) this.handleLink(e)
   }
-  handleLink (event) {
-    const e = event.nativeEvent
+  handleLink (e) {
     if (e.metaKey) return
     if (e.shiftKey) return
     if (e.altKey) return
     if (e.ctrlKey) return
-    console.log(e.which)
-    if (e.which !== 1) return
+    if (e.button !== 0) return
     this.context.legendaryPancake.go(this.props.to)
-    event.preventDefault()
+    e.preventDefault()
   }
 }
 
