@@ -1,11 +1,11 @@
-import useScroll from 'react-router-scroll/lib/useScroll'
+import { Route, Router, applyRouterMiddleware, useRouterHistory } from 'react-router'
+
 import React from 'react'
 import { createHistory } from 'history'
-import { render } from 'react-dom'
-import { applyRouterMiddleware, Router, Route, useRouterHistory } from 'react-router'
 import { createStore } from 'redux'
-
+import { render } from 'react-dom'
 import resolvePage from './resolvePage'
+import useScroll from 'react-router-scroll/lib/useScroll'
 
 // # createRenderer(pages, options) {#createRenderer}
 //
@@ -41,7 +41,16 @@ export function createRenderer (pages, options = { }) {
     //
     // Default is a no-op function.
     //
-    onLocationChange = () => { }
+    onLocationChange = () => { },
+
+    // ### shouldUpdateScroll(prevRouterProps, routerProps)
+    //
+    // This function will be called on route changes and return value on whether the page should be scrolled or not.
+    // Useful for custom scroll behaviours on page change.
+    // For more information : https://github.com/taion/react-router-scroll#custom-scroll-behavior
+    //
+    // Default is a function that always returns true.
+    shouldUpdateScroll = () => true
   } = options
 
   let currentPathname
@@ -150,7 +159,7 @@ export function createRenderer (pages, options = { }) {
           }
         }
         const element = (
-          <Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
+          <Router history={browserHistory} render={applyRouterMiddleware(useScroll(options.shouldUpdateScroll))}>
             <Route path='*' component={PageRenderer} onEnter={onEnter} />
           </Router>
         )
