@@ -71,6 +71,9 @@ export function createRenderer (pages, options = { }) {
           }
         }
       })
+    },
+    pathnameExists (pathname) {
+      return !!pages[pathname]
     }
   }
 

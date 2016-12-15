@@ -1,6 +1,7 @@
-import createRenderer from './createRenderer'
 import Link from './Link'
+import LinkHandler from './LinkHandler'
 import LoadingStateContainer from './LoadingStateContainer'
+import createRenderer from './createRenderer'
 
 // # Browser API
 //
@@ -19,4 +20,4 @@ import LoadingStateContainer from './LoadingStateContainer'
 //   A component that allows you to display a loading indicator.
 //
 
-export { Link, LoadingStateContainer, createRenderer }
+export { Link, LinkHandler, LoadingStateContainer, createRenderer }
