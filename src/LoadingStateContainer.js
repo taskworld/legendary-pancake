@@ -7,7 +7,7 @@ import React from 'react'
 export class LoadingStateContainer extends React.Component {
   constructor (props, context) {
     super(props, context)
-    const manager = context.legendaryPancake.manager
+    const manager = context.legendaryPancake && context.legendaryPancake.manager
     this.manager = manager
     this.state = { loading: manager.isLoading() }
   }

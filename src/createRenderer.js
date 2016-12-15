@@ -1,9 +1,9 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from 'redux'
+import { rebasePathname, stripBasenameFromPathname } from './PathUtils'
 
+import React from 'react'
+import { createStore } from 'redux'
+import { render } from 'react-dom'
 import resolvePage from './resolvePage'
-import { stripBasenameFromPathname, rebasePathname } from './PathUtils'
 
 // # createRenderer(pages, options) {#createRenderer}
 //
@@ -42,7 +42,17 @@ export function createRenderer (pages, options = { }) {
     //
     // Default is a no-op function.
     //
-    onLocationChange = () => { }
+    onLocationChange = (location) => { },
+
+    // ### shouldUpdateScroll(prevPathname, nextPathname)
+    //
+    // This function will be called on route changes and return value on
+    // whether the page should be scrolled or not. Useful for custom scroll
+    // behaviours on page change.
+    //
+    // Default is a function that always returns true.
+    //
+    shouldUpdateScroll = (prevPathname, nextPathname) => true
   } = options
 
   const componentContext = {
@@ -52,10 +62,13 @@ export function createRenderer (pages, options = { }) {
         window.location.href = rebasePathname(targetPathname)
         return
       }
+      const currentPathname = manager.getCurrentPathname()
       window.history.pushState(null, null, rebasePathname(targetPathname))
       loadPageFromLocation(() => {
         if (!window.location.hash) {
-          window.scrollTo(0, 0)
+          if (shouldUpdateScroll(currentPathname, targetPathname)) {
+            window.scrollTo(0, 0)
+          }
         }
       })
     }
