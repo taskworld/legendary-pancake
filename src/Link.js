@@ -35,8 +35,8 @@ export class Link extends React.Component {
     this.unsubscribe()
   }
   render () {
-    const { to, children, className, activeClassName, ...others } = this.props
-    const active = this.props.isActive(this.state.currentPathname, to)
+    const { to, children, isActive, className, activeClassName, ...others } = this.props
+    const active = isActive(this.state.currentPathname, to)
     const classNameToRender = classNames(className, active && activeClassName)
     return (
       <a
