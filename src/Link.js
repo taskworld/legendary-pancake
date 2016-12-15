@@ -1,11 +1,10 @@
-import classNames from 'classnames'
 import React from 'react'
-
+import classNames from 'classnames'
 import { rebasePathname } from './PathUtils'
 
 // # Link {#Link}
 //
-// A React component that renders a link.
+// A link to another pathname.
 //
 export class Link extends React.Component {
   static contextTypes = {
@@ -14,7 +13,11 @@ export class Link extends React.Component {
   static propTypes = {
     to: React.PropTypes.string,
     activeClassName: React.PropTypes.string,
+    isActive: React.PropTypes.func,
     children: React.PropTypes.node
+  }
+  static defaultProps = {
+    isActive: (pathName, to) => pathName === to
   }
   constructor (props, context) {
     super(props, context)
@@ -33,7 +36,7 @@ export class Link extends React.Component {
   }
   render () {
     const { to, children, className, activeClassName, ...others } = this.props
-    const active = this.state.currentPathname === to
+    const active = this.props.isActive(this.state.currentPathname, to)
     const classNameToRender = classNames(className, active && activeClassName)
     return (
       <a

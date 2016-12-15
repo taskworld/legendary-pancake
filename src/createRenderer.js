@@ -46,9 +46,9 @@ export function createRenderer (pages, options = { }) {
 
     // ### shouldUpdateScroll(prevPathname, nextPathname)
     //
-    // This function will be called on route changes and return value on
-    // whether the page should be scrolled or not. Useful for custom scroll
-    // behaviours on page change.
+    // This function will be called when the route changed.
+    // If it returns `true`, the page will be scrolled to the top.
+    // Useful for custom scroll behaviours on page change.
     //
     // Default is a function that always returns true.
     //
