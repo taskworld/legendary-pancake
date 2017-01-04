@@ -14,12 +14,37 @@
 
           <STYLE>.HTMLContent{text-align:left;font-size:.75em}.HTMLContent blockquote{border:.15em solid #ccc;border-left-width:.6em;margin-left:0;padding-left:.9em;margin-right:0;color:#444;font-size:.8em}.HTMLContent pre{padding:.5em;border:2px solid #ddd;font-size:.8em;white-space:pre-wrap}.HTMLContent pre code{font-family:Roboto Mono,monospace}.HTMLContent h1,.HTMLContent h2,.HTMLContent h3{margin-top:2em}code.language-js{color:#333}code.language-js .hljs-meta{color:#69c}code.language-js .hljs-keyword{color:#963;font-weight:700}code.language-js .hljs-regexp,code.language-js .hljs-string{color:#759}code.language-js .hljs-comment{color:#693}/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[hidden],template{display:none}body{text-align:center;font-size:30px;font-family:Arimo,sans-serif;margin-bottom:4em;background:#fff;color:#000}@media (max-width:720px){body{font-size:24px}}a{color:#25a9ac}nav{display:block}nav a{padding:.4em;margin:.1em;display:inline-block;text-decoration:none}nav a.active{color:#000;font-weight:700}main{max-width:25em;margin:0 auto;padding-left:.5em;padding-right:.5em;line-height:1.5}img{max-width:100%}code{font-family:Space Mono;color:#52b166}</STYLE>
         </head>
-        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="646448802"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/" data-reactid="4">Home</a><a href="/introduction/" class="active" data-reactid="5">Intro</a><a href="/pancake/" data-reactid="6">Pancake</a></nav><main style="opacity:1;" data-reactid="7"><!-- react-empty: 8 --><h1 data-reactid="9">Introduction</h1><div class="HTMLContent" data-reactid="10"><h1>legendary-pancake</h1>
+        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="-668539056"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/legendary-pancake/" class="" data-reactid="4">Home</a><a href="/legendary-pancake/introduction/" class="active" data-reactid="5">Intro</a><a href="/legendary-pancake/pancake/" class="" data-reactid="6">Pancake</a></nav><main style="opacity:1;" data-reactid="7"><!-- react-empty: 8 --><h1 data-reactid="9">Introduction</h1><div class="HTMLContent" data-reactid="10"><h1>legendary-pancake</h1>
 <blockquote>
 <p>Great repository names are short and memorable. Need inspiration? How about <strong>legendary-pancake</strong>.
 —GitHub</p>
 </blockquote>
-<p><strong>legendary-pancake</strong> is an <strong><em>advanced</em></strong> static site generator based on webpack, React and React Router. It has been extracted from Taskworld’s marketing site which requires:</p>
+<p><strong>legendary-pancake</strong> is an <strong><em>advanced</em></strong> static site generator based on webpack, React and React Router.</p>
+<h2>How it looks like</h2>
+<p>You define each of your page programmatically:</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> pages = {
+  <span class="hljs-string">'/'</span>: <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {
+    callback(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">HomePage</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span>)
+  },
+  <span class="hljs-string">'/profile/'</span>: <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {
+    callback(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">ProfilePage</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span>)
+  }
+}
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> article <span class="hljs-keyword">of</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">'./articles'</span>)) {
+  pages[<span class="hljs-string">`/articles/<span class="hljs-subst">${article.slug}</span>/`</span>] = <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {
+    article.loadContent().then(<span class="hljs-function">(<span class="hljs-params">content</span>) =&gt;</span> {
+      callback(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">ArticlePage</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{content}</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span>)
+    })
+  }
+}
+
+export default pages
+</span></code></pre>
+<p>Then legendary-pancake renders these pages into static HTML and also generates
+a client side bundle to further enhance the experience.</p>
+<h2>About</h2>
+<p>It has been extracted from Taskworld’s marketing site which requires:</p>
 <ul>
 <li>
 <p><strong>Localization.</strong> The entire site may be translated into multiple languages.</p>
@@ -80,6 +105,6 @@ legendary-pancake preconfigures React Router to support asynchronous routing and
 The source code lives in the <a href="https://github.com/taskworld/legendary-pancake/tree/master/examples/homepage/">examples/homepage</a> directory.</li>
 </ul>
 </div></main></div></div>
-        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-163c46ca348961ff052a.js'></SCRIPT>
+        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-d98ba7cc171ac97d4117.js'></SCRIPT>
       </html>
     
