@@ -1,5 +1,4 @@
 import { createRenderer } from 'legendary-pancake'
-
 import pages from './pages'
 
 const app = document.getElementById('app')

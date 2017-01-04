@@ -3,7 +3,41 @@
 > Great repository names are short and memorable. Need inspiration? How about __legendary-pancake__.
 > —GitHub
 
-__legendary-pancake__ is an ___advanced___ static site generator based on webpack, React and React Router. It has been extracted from Taskworld’s marketing site which requires:
+__legendary-pancake__ is an ___advanced___ static site generator based on webpack, React and React Router.
+
+
+## How it looks like
+
+You define each of your page programmatically:
+
+```js
+const pages = {
+  '/': (callback) => {
+    callback(<Layout><HomePage /></Layout>)
+  },
+  '/profile/': (callback) => {
+    callback(<Layout><ProfilePage /></Layout>)
+  }
+}
+
+for (const article of require('./articles')) {
+  pages[`/articles/${article.slug}/`] = (callback) => {
+    article.loadContent().then((content) => {
+      callback(<Layout><ArticlePage content={content} /></Layout>)
+    })
+  }
+}
+
+export default pages
+```
+
+Then legendary-pancake renders these pages into static HTML and also generates
+a client side bundle to further enhance the experience.
+
+
+## About
+
+It has been extracted from Taskworld’s marketing site which requires:
 
 - __Localization.__ The entire site may be translated into multiple languages.
 

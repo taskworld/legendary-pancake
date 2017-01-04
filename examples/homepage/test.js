@@ -14,6 +14,7 @@ describe('generated pages', () => {
   exists('build/browser/index.html')
   contains('build/browser/index.html', 'page title', 'Home page - legendary-pancake')
   contains('build/browser/index.html', 'rendered content', 'static site builder based on React')
+  contains('build/browser/index.html', 'link to correct base', '/legendary-pancake/introduction/')
   contains('build/browser/index.html', 'google fonts as preload assets', 'REL="preload"')
   contains('build/browser/index.html', 'loadCSS inlined', 'loadCSS')
   contains('build/browser/index.html', 'css rel="preload" polyfill inlined', 'supports("preload")')

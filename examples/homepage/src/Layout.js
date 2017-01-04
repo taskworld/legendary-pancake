@@ -1,12 +1,13 @@
 import './Layout.less'
 
+import { Link, LinkHandler, LoadingStateContainer } from 'legendary-pancake'
+
 import Helmet from 'react-helmet'
 import React from 'react'
-import { Link, LoadingStateContainer } from 'legendary-pancake'
 
 export default function Layout ({ children }) {
   return (
-    <div>
+    <LinkHandler>
       <Helmet titleTemplate='%s - legendary-pancake' />
       <nav>
         <NavLink to='/'>Home</NavLink>
@@ -20,7 +21,7 @@ export default function Layout ({ children }) {
           </main>
         )}
       />
-    </div>
+    </LinkHandler>
   )
 }
 

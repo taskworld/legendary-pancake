@@ -21,20 +21,26 @@ function prerenderPages () {
   const stats = require(fs.realpathSync('build/webpack.stats.browser.json'))
   const promises = [ ]
   for (const pathname of pathnames) {
-    promises.push(new Promise((resolve, reject) => {
-      render({ pathname, stats }, (error, html) => {
-        if (error) {
-          console.log(error)
-          return reject(error)
-        }
-        if (typeof html === 'string') {
-          emit({ [pathname]: html })
-        } else {
-          emit(html)
-        }
-        resolve()
+    promises.push(
+      new Promise((resolve, reject) => {
+        render({ pathname, stats }, (error, html) => {
+          if (error) {
+            return reject(error)
+          }
+          if (typeof html === 'string') {
+            emit({ [pathname]: html })
+          } else {
+            emit(html)
+          }
+          resolve()
+        })
       })
-    }))
+      .catch((error) => {
+        console.log(chalk.bold.red('* Failed to prerender %s'), pathname)
+        console.log(error)
+        throw error
+      })
+    )
   }
   return Promise.all(promises)
 
