@@ -11,8 +11,8 @@ function asyncCSS (href) {
 // Uglify and concatenate loadCSS to include as script tag.
 function loadCSS () {
   const script = [
-    require('raw!uglify!fg-loadcss/src/loadCSS'),
-    require('raw!uglify!fg-loadcss/src/cssrelpreload.js')
+    require('raw-loader!uglify-loader!fg-loadcss/src/loadCSS'),
+    require('raw-loader!uglify-loader!fg-loadcss/src/cssrelpreload.js')
   ].join(';')
   return '<SCRIPT>' + script + '</SCRIPT>'
 }

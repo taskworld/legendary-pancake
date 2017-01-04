@@ -53,7 +53,10 @@ function getConfig () {
   ]
 
   function getBrowserConfig () {
-    const extractTextPlugin = new ExtractTextPlugin('assets/stylesheets/style-[contenthash].css', { allChunks: true })
+    const extractTextPlugin = new ExtractTextPlugin({
+      filename: 'assets/stylesheets/style-[contenthash].css',
+      allChunks: true
+    })
 
     const config = {
       entry: {
@@ -66,7 +69,7 @@ function getConfig () {
         chunkFilename: 'assets/javascripts/chunk-[name]-[chunkhash].js'
       },
       module: {
-        loaders: [ ]
+        rules: [ ]
       },
       resolve: {
         alias: { }
@@ -74,8 +77,6 @@ function getConfig () {
       profile: true,
       plugins: [
         extractTextPlugin,
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
           'process.env': {
             'NODE_ENV': JSON.stringify('production')
@@ -97,7 +98,10 @@ function getConfig () {
   }
 
   function getPrerendererConfig () {
-    const extractTextPlugin = new ExtractTextPlugin('assets/stylesheets/style-[contenthash].css', { allChunks: true })
+    const extractTextPlugin = new ExtractTextPlugin({
+      filename: 'assets/stylesheets/style-[contenthash].css',
+      allChunks: true
+    })
 
     const config = {
       entry: {
@@ -112,7 +116,7 @@ function getConfig () {
       },
       target: 'node',
       module: {
-        loaders: [ ]
+        rules: [ ]
       },
       resolve: {
         alias: { }
@@ -120,8 +124,6 @@ function getConfig () {
       plugins: [
         extractTextPlugin,
         new JsOnlyPlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
           'process.env': {
             'NODE_ENV': JSON.stringify('prerenderer')

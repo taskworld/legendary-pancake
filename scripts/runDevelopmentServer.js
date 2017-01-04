@@ -53,13 +53,12 @@ function getConfig () {
       chunkFilename: 'assets/javascripts/chunk-[name]-[chunkhash].js'
     },
     module: {
-      loaders: [ ]
+      rules: [ ]
     },
     resolve: {
       alias: { }
     },
     plugins: [
-      new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebpackPlugin({
         template: userConfigApplier.getDevelopmentTemplateFile()

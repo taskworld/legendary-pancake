@@ -1,11 +1,12 @@
 'use strict'
 
 const path = require('path')
+const webpack = require('../../node_modules/webpack')
 
 exports.basePathname = '/legendary-pancake/'
 
 exports.configureWebpack = (config, { css }) => {
-  config.module.loaders.push(
+  config.module.rules.push(
     {
       test: /\.js$/,
       include: path.join(__dirname, 'src'),
@@ -16,7 +17,7 @@ exports.configureWebpack = (config, { css }) => {
       loader: css('css-loader')
     },
     {
-      test: /\.less/,
+      test: /\.less$/,
       loader: css('css-loader!less-loader')
     },
     {
@@ -33,9 +34,16 @@ exports.configureWebpack = (config, { css }) => {
     }
   )
   config.output.publicPath = '/legendary-pancake/'
-  config['markdown-it'] = {
-    typographer: true,
-    use: [ require('markdown-it-attrs') ]
-  }
+  config.plugins.push(
+    new webpack.LoaderOptionsPlugin({
+      test: /\.md$/,
+      options: {
+        'markdown-it': {
+          typographer: true,
+          use: [ require('markdown-it-attrs') ]
+        }
+      }
+    })
+  )
   return config
 }
