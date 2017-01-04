@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-      <html  >
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta http-equiv="X-UA-Compatible" content="ie=edge">
-          <title data-react-helmet="true">Pancake - legendary-pancake</title>
-          
-          
-          
-          
-  <LINK REL="preload" HREF="https://fonts.googleapis.com/css?family=Arimo:Arimo:400,400i,700,700i|Space+Mono:400,700" AS=style ONLOAD="this.rel='stylesheet'" />
-  <SCRIPT>!function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);;!function(t){if(t.loadCSS){var e=loadCSS.relpreload={};if(e.support=function(){try{return t.document.createElement("link").relList.supports("preload")}catch(t){return!1}},e.poly=function(){for(var e=t.document.getElementsByTagName("link"),n=0;n<e.length;n++){var r=e[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(t.loadCSS(r.href,r),r.rel=null)}},!e.support()){e.poly();var n=t.setInterval(e.poly,300);t.addEventListener&&t.addEventListener("load",function(){t.clearInterval(n)}),t.attachEvent&&t.attachEvent("onload",function(){t.clearInterval(n)})}}}(this);</SCRIPT>
-
-          <STYLE>.HTMLContent {
+.HTMLContent {
   text-align: left;
   font-size: 0.75em;
 }
@@ -560,9 +546,3 @@ code {
   font-family: 'Space Mono';
   color: #52b166;
 }
-</STYLE>
-        </head>
-        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="-492375231"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/legendary-pancake/" class="" data-reactid="4">Home</a><a href="/legendary-pancake/introduction/" class="" data-reactid="5">Intro</a><a href="/legendary-pancake/pancake/" class="active" data-reactid="6">Pancake</a></nav><main style="opacity:1;" data-reactid="7"><!-- react-empty: 8 --><div data-reactid="9"><h1 data-reactid="10">Pancake</h1><p data-reactid="11">It’s a React pancake.</p><img src="/legendary-pancake/4110dacb98d22796eb561047f1b27c9b.jpg" data-reactid="12"/><p data-reactid="13">This page is loaded asynchronously.</p></div></main></div></div>
-        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-cc90361f6e0da075ef35.js'></SCRIPT>
-      </html>
-    

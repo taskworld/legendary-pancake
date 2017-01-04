@@ -4,7 +4,7 @@
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <meta http-equiv="X-UA-Compatible" content="ie=edge">
-          <title data-react-helmet="true">API - legendary-pancake</title>
+          <title data-react-helmet="true"></title>
           
           
           
@@ -12,208 +12,558 @@
   <LINK REL="preload" HREF="https://fonts.googleapis.com/css?family=Arimo:Arimo:400,400i,700,700i|Space+Mono:400,700" AS=style ONLOAD="this.rel='stylesheet'" />
   <SCRIPT>!function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);;!function(t){if(t.loadCSS){var e=loadCSS.relpreload={};if(e.support=function(){try{return t.document.createElement("link").relList.supports("preload")}catch(t){return!1}},e.poly=function(){for(var e=t.document.getElementsByTagName("link"),n=0;n<e.length;n++){var r=e[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(t.loadCSS(r.href,r),r.rel=null)}},!e.support()){e.poly();var n=t.setInterval(e.poly,300);t.addEventListener&&t.addEventListener("load",function(){t.clearInterval(n)}),t.attachEvent&&t.attachEvent("onload",function(){t.clearInterval(n)})}}}(this);</SCRIPT>
 
-          <STYLE>.HTMLContent{text-align:left;font-size:.75em}.HTMLContent blockquote{border:.15em solid #ccc;border-left-width:.6em;margin-left:0;padding-left:.9em;margin-right:0;color:#444;font-size:.8em}.HTMLContent pre{padding:.5em;border:2px solid #ddd;font-size:.8em;white-space:pre-wrap}.HTMLContent pre code{font-family:Roboto Mono,monospace}.HTMLContent h1,.HTMLContent h2,.HTMLContent h3{margin-top:2em}code.language-js{color:#333}code.language-js .hljs-meta{color:#69c}code.language-js .hljs-keyword{color:#963;font-weight:700}code.language-js .hljs-regexp,code.language-js .hljs-string{color:#759}code.language-js .hljs-comment{color:#693}/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[hidden],template{display:none}body{text-align:center;font-size:30px;font-family:Arimo,sans-serif;margin-bottom:4em;background:#fff;color:#000}@media (max-width:720px){body{font-size:24px}}a{color:#25a9ac}nav{display:block}nav a{padding:.4em;margin:.1em;display:inline-block;text-decoration:none}nav a.active{color:#000;font-weight:700}main{max-width:25em;margin:0 auto;padding-left:.5em;padding-right:.5em;line-height:1.5}img{max-width:100%}code{font-family:Space Mono;color:#52b166}</STYLE>
+          <STYLE>.HTMLContent {
+  text-align: left;
+  font-size: 0.75em;
+}
+.HTMLContent blockquote {
+  border: 0.15em solid #ccc;
+  border-left-width: 0.6em;
+  margin-left: 0;
+  padding-left: 0.9em;
+  margin-right: 0;
+  color: #444;
+  font-size: 0.8em;
+}
+.HTMLContent pre {
+  padding: 0.5em;
+  border: 2px solid #ddd;
+  font-size: 0.8em;
+  white-space: pre-wrap;
+}
+.HTMLContent pre code {
+  font-family: Roboto Mono, monospace;
+}
+.HTMLContent h1,
+.HTMLContent h2,
+.HTMLContent h3 {
+  margin-top: 2em;
+}
+code.language-js {
+  color: #333;
+}
+code.language-js .hljs-meta {
+  color: #69c;
+}
+code.language-js .hljs-keyword {
+  color: #963;
+  font-weight: bold;
+}
+code.language-js .hljs-string,
+code.language-js .hljs-regexp {
+  color: #759;
+}
+code.language-js .hljs-comment {
+  color: #693;
+}
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+
+/* Document
+   ========================================================================== */
+
+html {
+  font-family: sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+
+figcaption,
+figure,
+main { /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+
+details, /* 1 */
+menu {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Scripting
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+canvas {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in IE.
+ */
+
+template {
+  display: none;
+}
+
+/* Hidden
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10-.
+ */
+
+[hidden] {
+  display: none;
+}
+body {
+  text-align: center;
+  font-size: 30px;
+  font-family: Arimo, sans-serif;
+  margin-bottom: 4em;
+  background: white;
+  color: black;
+}
+@media (max-width: 720px) {
+  body {
+    font-size: 24px;
+  }
+}
+a {
+  color: #25a9ac;
+}
+nav {
+  display: block;
+}
+nav a {
+  padding: 0.4em;
+  margin: 0.1em;
+  display: inline-block;
+  text-decoration: none;
+}
+nav a.active {
+  color: black;
+  font-weight: bold;
+}
+main {
+  max-width: 25em;
+  margin: 0 auto;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  line-height: 1.5;
+}
+img {
+  max-width: 100%;
+}
+code {
+  font-family: 'Space Mono';
+  color: #52b166;
+}
+</STYLE>
         </head>
-        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="-70696106"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/legendary-pancake/" class="" data-reactid="4">Home</a><a href="/legendary-pancake/introduction/" class="" data-reactid="5">Intro</a><a href="/legendary-pancake/pancake/" class="" data-reactid="6">Pancake</a></nav><main style="opacity:1;" data-reactid="7"><!-- react-empty: 8 --><h1 data-reactid="9">API</h1><div class="HTMLContent" data-reactid="10"><h1>legendary-pancake.config.js</h1>
-<p>The <code>legendary-pancake.config.js</code> file is read by the <code>legendary-pancake</code>
-CLI tool and is used to configure webpack.</p>
-<p>It should export a configuration object, which may contain these members:</p>
-<h2>configureWebpack(config, pancake)</h2>
-<p>legendary-pancake will use this function to let you customize the webpack
-config. It will be given these arguments:</p>
-<ul>
-<li>
-<p><code>config</code> The base webpack configuration. You can mutate this object directly
-to modify the configuration.</p>
-</li>
-<li>
-<p><code>pancake</code> An object with renderContext information about the build, as well as some
-renderContext helpers.</p>
-</li>
-</ul>
-<p>It should return the modified webpack configuration.</p>
-<h3 id="config-pancake">pancake</h3>
-<p>The <code>pancake</code> object has these properties:</p>
-<ul>
-<li>
-<p><code>webpack</code> The webpack module (<code>require('webpack')</code>).</p>
-</li>
-<li>
-<p><code>env</code> A string representing the build target.</p>
-<ul>
-<li><code>&quot;development&quot;</code> when running the development server</li>
-<li><code>&quot;prerenderer&quot;</code> when building the prerenderer</li>
-<li><code>&quot;production&quot;</code> when building the production page</li>
-</ul>
-</li>
-<li>
-<p><code>css(loader)</code> adapts css-loader for hot-reloading (development) and extraction
-into a separate CSS file (build). See <a href="css.md">CSS</a> page for more details.</p>
-</li>
-</ul>
-<h2>basePathname</h2>
-<p>By default, legendary-pancake builds your page expecting that it will be
-hosted on the root path.</p>
-<p>If that’s not the case, you need to configure <code>basePathname</code> to point to
-the pathname where your web pages will be hosted.</p>
-<p>Usually, this should be the same as <code>config.output.publicPath</code> in webpack
-configuration.</p>
-<h2>splitPages</h2>
-<p>Configures whether legendary-pancake should build the HTML files into a different
-folder from the assets folder.</p>
-<ul>
-<li>
-<p>If <code>false</code> (default), the HTML pages will be saved to <code>build/browser</code>.</p>
-<p>This is the same directory as the assets. This means you can upload this
-directory to a static web host immediately.</p>
-</li>
-<li>
-<p>If <code>true</code>, the HTML pages will be saved to <code>build/pages</code> instead.</p>
-<p>This is useful in case the HTML files should be served by a different
-server, which allows for (e.g.) A/B testing and
-<a href="https://en.wikipedia.org/wiki/Content_negotiation">content negotiation</a>.</p>
-</li>
-</ul>
-<h2>developmentTemplateFile</h2>
-<p>Specifies the template file to use when running the development server.
-This template will be passed to <a href="https://github.com/ampedandwired/html-webpack-plugin">HtmlWebpackPlugin</a>.
-Defaults to <code>./src/dev.html</code>.</p>
-<h2>browserEntryFile</h2>
-<p>Specifies the file to be used as browser entry point.
-Defaults to <code>./src/browser.js</code>.</p>
-<h2>prerendererEntryFile</h2>
-<p>Specifies the file to be used as prerenderer.
-Defaults to <code>./src/prerenderer.js</code>.</p>
-<h1>Browser API</h1>
-<p>Require <code>legendary-pancake</code> to access this API. It provides these members:</p>
-<ul>
-<li>
-<p><a href="#createRenderer"><strong>createRenderer</strong></a></p>
-<p>Creates a renderer for use in browser.</p>
-</li>
-<li>
-<p><a href="https://github.com/ReactTraining/react-router/blob/v3.0.0/docs/API.md#link"><strong>Link</strong></a></p>
-<p>The Link component from React Router.</p>
-</li>
-<li>
-<p><a href="#LoadingStateContainer"><strong>LoadingStateContainer</strong></a></p>
-<p>A component that allows you to display a loading indicator.</p>
-</li>
-</ul>
-<h1>Prerenderer API</h1>
-<p>An API to help you create a prerenderer that can be used with
-<code>legendary-pancake</code> build command. It exports these members:</p>
-<ul>
-<li>
-<p><a href="#createPrerenderer"><strong>createPrerenderer</strong></a></p>
-<p>Creates an instance of a prerenderer.</p>
-</li>
-<li>
-<p><a href="#defaultRenderRedirectPage"><strong>defaultRenderRedirectPage</strong></a></p>
-</li>
-</ul>
-<h1 id="createRenderer">createRenderer(pages, options)</h1>
-<p>Creates a renderer object that can render the provided pages into the DOM.</p>
-<ul>
-<li>
-<p><code>pages</code> A mapping from pathname to a page function.</p>
-</li>
-<li>
-<p><code>options</code> An <a href="#RendererOptions">RendererOptions</a> object.</p>
-</li>
-</ul>
-<p>Returns a <a href="#Renderer">Renderer</a>.</p>
-<h2 id="RendererOptions">RendererOptions</h2>
-<h3>renderPage(page)</h3>
-<p>This function will be called prior to rendering the page. It will receive
-the page content (a React node) and should return what should be rendered
-(a React node).</p>
-<p>Default is an identity function. But you can customize this function
-if you want to add contexts.</p>
-<h3>onLocationChange(location)</h3>
-<p>This function will be called when the location changes. Useful for
-tracking analytic pageviews.</p>
-<p>Default is a no-op function.</p>
-<h3>shouldUpdateScroll(prevPathname, nextPathname)</h3>
-<p>This function will be called when the route changed.
-If it returns <code>true</code>, the page will be scrolled to the top.
-Useful for custom scroll behaviours on page change.</p>
-<p>Default is a function that always returns true.</p>
-<h2 id="Renderer">Renderer</h2>
-<p>Created by <a href="#createRenderer">createRenderer</a>().</p>
-<h3>renderTo(container)</h3>
-<p>Renders the static site into the DOM.</p>
-<ul>
-<li><code>container</code> A DOM element to render the site to.</li>
-</ul>
-<p>It will load the first page content before mounting the React Router.</p>
-<p>Wait for manager to be ready…</p>
-<h3>createHotReloadHandler(getPages)</h3>
-<p>Creates a hot reload handler suitable for using with <code>module.hot.accept</code>.</p>
-<p>See <a href="/legendary-pancake/docs/getting-started/" data-to="/docs/getting-started/">Getting Started</a> guide for example.</p>
-<h1 id="createPrerenderer">createPrerenderer(pages, options)</h1>
-<p>Creates a prerenderer object that can render the provided pages into static
-website.</p>
-<ul>
-<li>
-<p><code>pages</code> A mapping from pathname to a page function.</p>
-</li>
-<li>
-<p><code>options</code> An <a href="#PrerendererOptions">PrerendererOptions</a> object.</p>
-</li>
-</ul>
-<p>Returns a Prerenderer. It will be used by <code>legendary-pancake build</code> command.</p>
-<h2 id="PrerendererOptions">PrerendererOptions</h2>
-<h3>renderPage(content, renderContext)</h3>
-<p><strong>Required.</strong> This funtion will be called during the build process
-to generate your content pages. It will receive these arguments:</p>
-<ul>
-<li>
-<p><code>content</code> The page content (a React node).</p>
-</li>
-<li>
-<p><code>renderContext</code> A RenderContext that provides additional information
-required to build the page.</p>
-</li>
-</ul>
-<p>It should return a RenderedPage.</p>
-<h3>renderRedirectPage(targetPathname, renderContext)</h3>
-<p>This funtion will be called during the build process to generate a
-redirect file. It will receive these arguments:</p>
-<ul>
-<li>
-<p><code>targetPathname</code> The string representing the redirection target pathname.</p>
-</li>
-<li>
-<p><code>renderContext</code> A RenderContext that provides additional information
-required to build the page.</p>
-</li>
-</ul>
-<p>It should return a RenderedPage.</p>
-<h2>RenderContext</h2>
-<p>A RenderContext contains additional information required to build the
-static version of this web page.</p>
-<h3>pathname</h3>
-<p>A string representing the pathname being built.</p>
-<h3>stylesheets</h3>
-<p>An array representing a list of stylesheet objects. Each object
-contains <code>url</code> and <code>content</code> properties.</p>
-<h3>javascripts</h3>
-<p>An array representing a list of JavaScript files. Each object
-contains <code>url</code> and <code>content</code> properties.</p>
-<h3>stats</h3>
-<p>Webpack stats object.</p>
-<h1>defaultRenderRedirectPage</h1>
-<p>A default implementation of renderRedirectPage option used in
-<a href="#PrerendererOptions">PrerendererOptions</a>.</p>
-<h1 id="LoadingStateContainer">LoadingStateContainer</h1>
-<p>A React component that lets you render a loading indicator.</p>
-<p>It takes the following props:</p>
-<ul>
-<li><code>renderContent(loading)</code> This prop will be called with a boolean value
-<code>loading</code> and should return the thing that this component should render.</li>
-</ul>
+        <div id='app'><div data-reactroot="" data-reactid="1" data-react-checksum="75538042"><!-- react-empty: 2 --><nav data-reactid="3"><a href="/legendary-pancake/" class="" data-reactid="4">Home</a><a href="/legendary-pancake/introduction/" class="" data-reactid="5">Intro</a><a href="/legendary-pancake/pancake/" class="" data-reactid="6">Pancake</a></nav><main style="opacity:1;" data-reactid="7"><!-- react-empty: 8 --><h1 data-reactid="9"></h1><div class="HTMLContent" data-reactid="10"><p>[object Object]</p>
 </div></main></div></div>
-        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-d98ba7cc171ac97d4117.js'></SCRIPT>
+        <SCRIPT SRC='/legendary-pancake/assets/javascripts/bundle-cc90361f6e0da075ef35.js'></SCRIPT>
       </html>
     
