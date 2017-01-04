@@ -5,7 +5,7 @@
 // See: https://webpack.github.io/docs/context.html
 //
 const documentationMetadataContext = require.context(
-  'json!front-matter?onlyAttributes!../../../docs',
+  'json-loader!front-matter?onlyAttributes!../../../docs',
   false,
   /\.md$/
 )
