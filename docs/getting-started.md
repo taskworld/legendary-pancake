@@ -65,8 +65,7 @@ code into normal JavaScript. We’ll use Babel:
 yarn add --dev \
   babel-core \
   babel-loader \
-  babel-preset-es2015 \
-  babel-preset-es2016 \
+  babel-preset-latest \
   babel-preset-stage-2 \
   babel-preset-react
 ```
@@ -76,8 +75,7 @@ Then we configure Babel by creating a `.babelrc` file:
 ```js
 {
   "presets": [
-    "es2015",
-    "es2016",
+    [ "latest", { "es2015": { "modules": false } } ],
     "stage-2",
     "react"
   ]
@@ -111,7 +109,7 @@ const path = require('path')
 
 exports.configureWebpack = (config, pancake) => {
   // Babel
-  config.module.loaders.push({
+  config.module.rules.push({
     test: /\.js$/,
     include: path.join(__dirname, 'src'),
     loader: 'babel-loader'
@@ -174,6 +172,7 @@ Create `src/Layout.js`; it is used by `pages.js` (above):
 
 ```js
 import React from 'react'
+import { Link } from 'legendary-pancake'
 
 function Layout ({ children }) {
   return (
@@ -191,6 +190,8 @@ function Layout ({ children }) {
     </div>
   )
 }
+
+export default Layout
 ```
 
 
@@ -254,7 +255,7 @@ Now it’s time to run the development server!
 Run this command:
 
 ```bash
-npm start
+yarn start
 ```
 
 If the build is successful, you should see something like this in the Terminal:
