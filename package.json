@@ -35,9 +35,9 @@
     "rimraf": "^2.5.4",
     "scroll-behavior": "^0.9.1",
     "style-loader": "^0.13.1",
-    "webpack": "^2.2.0-rc.3",
-    "webpack-dev-middleware": "^1.8.4",
-    "webpack-dev-server": "^2.2.0-rc.0",
+    "webpack": "^2.2",
+    "webpack-dev-middleware": "^1.9",
+    "webpack-dev-server": "^2.2",
     "webpack-hot-middleware": "^2.15.0"
   },
   "devDependencies": {
