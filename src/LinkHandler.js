@@ -1,5 +1,6 @@
 import { isPathnameStartingWithBasename, stripBasenameFromPathname } from './PathUtils'
 
+import PropTypes from 'prop-types'
 import React from 'react'
 
 // # LinkHandler {#LinkHandler}
@@ -8,10 +9,10 @@ import React from 'react'
 //
 export class LinkHandler extends React.Component {
   static contextTypes = {
-    legendaryPancake: React.PropTypes.object
+    legendaryPancake: PropTypes.object
   }
   static propTypes = {
-    children: React.PropTypes.node
+    children: PropTypes.node
   }
   render () {
     return <div onClick={this.onClick}>{this.props.children}</div>

@@ -1,5 +1,6 @@
 import { rebasePathname, stripBasenameFromPathname } from './PathUtils'
 
+import PropTypes from 'prop-types'
 import React from 'react'
 import { createStore } from 'redux'
 import { render } from 'react-dom'
@@ -101,7 +102,7 @@ export function createRenderer (pages, options = { }) {
     }
   }
   PageRenderer.childContextTypes = {
-    legendaryPancake: React.PropTypes.object
+    legendaryPancake: PropTypes.object
   }
 
   function handlePathname (pathname, onFinish) {

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import classNames from 'classnames'
 import { rebasePathname } from './PathUtils'
@@ -8,13 +9,13 @@ import { rebasePathname } from './PathUtils'
 //
 export class Link extends React.Component {
   static contextTypes = {
-    legendaryPancake: React.PropTypes.object
+    legendaryPancake: PropTypes.object
   }
   static propTypes = {
-    to: React.PropTypes.string,
-    activeClassName: React.PropTypes.string,
-    isActive: React.PropTypes.func,
-    children: React.PropTypes.node
+    to: PropTypes.string,
+    activeClassName: PropTypes.string,
+    isActive: PropTypes.func,
+    children: PropTypes.node
   }
   static defaultProps = {
     isActive: (pathName, to) => pathName === to

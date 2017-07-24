@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types'
 import React from 'react'
-
 // # LoadingStateContainer {#LoadingStateContainer}
 //
 // A React component that lets you render a loading indicator.
@@ -30,10 +30,10 @@ LoadingStateContainer.propTypes = {
   // - `renderContent(loading)` This prop will be called with a boolean value
   //   `loading` and should return the thing that this component should render.
   //
-  renderContent: React.PropTypes.func.isRequired
+  renderContent: PropTypes.func.isRequired
 }
 LoadingStateContainer.contextTypes = {
-  legendaryPancake: React.PropTypes.object
+  legendaryPancake: PropTypes.object
 }
 
 export default LoadingStateContainer
