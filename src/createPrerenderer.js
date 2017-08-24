@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types'
+import React from 'react'
 import fs from 'fs'
 import path from 'path'
-import React from 'react'
-
 import resolvePage from './resolvePage'
 
 // # createPrerenderer(pages, options) {#createPrerenderer}
@@ -110,7 +110,7 @@ export function createPrerenderer (pages, options) {
 
 class PageRenderer extends React.Component {
   static childContextTypes = {
-    legendaryPancake: React.PropTypes.object
+    legendaryPancake: PropTypes.object
   }
   getChildContext () {
     return {
